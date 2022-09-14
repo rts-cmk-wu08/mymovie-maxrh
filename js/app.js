@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					`
 
 
-				console.log(result.id)
+				console.log(result.genre_ids)
 
 				popularList.append(item)
 			})
