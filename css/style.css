@@ -85,8 +85,28 @@ section {
 .item .rating {
 	color: rgba(0,0,0,0.54);
 	font-size: 12px;
+	margin-bottom: 10px;
+	display: block;
 }
 
 .item .rating i {
 	color: #f5c518;
+}
+
+ul.genres {
+	display: flex;
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+ul.genres li {
+	background: #DBE3FF;
+	padding: 4px 12px;
+	font-size: 8px;
+	text-transform: uppercase;
+	border-radius: 100px;
+}
+
+.item .runtime {
+	font-size: 12px;
 }
