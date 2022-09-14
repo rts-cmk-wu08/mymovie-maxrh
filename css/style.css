@@ -1,0 +1,31 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: Verdana;
+	font-size: 13px;
+	margin: 20px;
+}
+
+h1 {
+	margin: 20px 0px;
+}
+
+h2 {
+	margin: 20px 0px;
+}
+
+h3 {
+	margin: 20px 0px;
+}
+
+hr {
+	margin: 30px 0px;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
