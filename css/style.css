@@ -11,11 +11,15 @@ body {
 	font-size: 13px;
 	margin: 20px;
 	font-weight: 400;
+	color: #888;
+	line-height: 1.6;
 }
 
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 15px;
+	color: #000;
+	line-height: 1.25;
 }
 
 h1 {}
@@ -30,6 +34,15 @@ hr {
 
 p {
 	margin: 0 0 20px;
+}
+
+strong {
+	color: #000;
+}
+
+.toggle {
+	display: block;
+	font-size: 20px;
 }
 
 section {
@@ -82,14 +95,14 @@ section {
 	margin-bottom: 5px;
 }
 
-.item .rating {
+.rating {
 	color: rgba(0,0,0,0.54);
 	font-size: 12px;
 	margin-bottom: 10px;
 	display: block;
 }
 
-.item .rating i {
+.rating i {
 	color: #f5c518;
 }
 
@@ -109,4 +122,20 @@ ul.genres li {
 
 .item .runtime {
 	font-size: 12px;
+}
+
+
+
+.content .details {
+	display: flex;
+	list-style: none;
+	margin: 0 -15px;
+}
+
+.content .details li {
+	margin: 0 15px;
+}
+
+.content .details label {
+	display: block;
 }

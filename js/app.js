@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
 	let showingList = document.querySelector(".showing-list")
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					`
 
 
-				console.log(result.runtime)
+				console.log(result.id)
 
 				popularList.append(item)
 			})
