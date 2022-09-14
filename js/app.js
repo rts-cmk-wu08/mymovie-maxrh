@@ -1,5 +1,4 @@
 
-// "DOMContentLoaded" event'en sørger for, at Javascriptet først kører når hele HTML dokumentet er indlæst
 document.addEventListener("DOMContentLoaded", () => {
 
 	let showingItems = document.querySelector(".showing-list")
@@ -15,18 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				item.classList.add("item")
 
 				item.innerHTML = `
-					<h1>${result.original_title}</h1>
+					<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}">
+					<div class="item-content">
+						<h1>${result.title}</h1>
+						<span class="rating"><i class="fa-solid fa-star"></i> ${result.vote_average}/10 IMDb</span>
+					</div>
 					`
-
-
 				
 				showingItems.append(item)
+				console.log(result.vote_average)
 			})
-		
 
 
 			console.log(data)
-
 		})
 
 
@@ -40,7 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				item.classList.add("item")
 
 				item.innerHTML = `
-					<h1>${result.original_title}</h1>
+					<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}">
+					<div class="item-content">
+						<h1>${result.title}</h1>
+						<span class="rating"><i class="fa-solid fa-star"></i> ${result.vote_average}/10 IMDb</span>
+
+					</div>
 					`
 
 
