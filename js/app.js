@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	mainElm.append(showingElm)
 
 	let showingHeader = document.createElement("header")
-	showingHeader.classList.add("showing-header")
+	showingHeader.classList.add("section-header")
 	showingElm.append(showingHeader)
 
 	let showingList = document.createElement("ul")
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	mainElm.append(popularElm)
 
 	let popularHeader = document.createElement("header")
-	popularHeader.classList.add("popular-header")
+	popularHeader.classList.add("section-header")
 
 	popularElm.append(popularHeader)
 
@@ -42,17 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	headerElm.innerHTML = `
 			<h1 class="site-title">MyMovies</h1>
-			<button class="toggle" onclick="darkmodeToggle()"><i  id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+			<div class="nav">
+				<button class="toggle" onclick="darkmodeToggle()"><i  id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+			</div>
 		`
 	
 	showingHeader.innerHTML = `
-			<h1>Now Showing</h1>
-			<a href="#">See more</a>
+			<h1 class="block-title">Now Showing</h1>
+			<a href="#" class="btn">See more</a>
 		`
 
 	popularHeader.innerHTML = `
-			<h1>Popular</h1>
-			<a href="#">See more</a>
+			<h1 class="block-title">Popular</h1>
+			<a href="#" class="btn">See more</a>
 		`
 
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)

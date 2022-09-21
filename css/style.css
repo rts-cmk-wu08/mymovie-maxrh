@@ -38,6 +38,8 @@ h2 {
 .block-title {
 	font-family: 'Merriweather', serif;
 	font-size: 16px;
+	line-height: 26px;
+	margin-bottom: 10px;
 }
 
 hr {
@@ -57,12 +59,29 @@ strong {
 	color: #000;
 }
 
+
+.btn {
+	font-size: 12px;
+	border: 1px solid rgba(0,0,0, 0.1);
+	border-radius: 50px;
+	line-height: 16px;
+	padding: 4px 12px;
+	color: rgba(0,0,0, 0.5);
+}
+
 section {
 	margin-bottom: 30px;
 }
 
 header {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+}
+
+.frontpage-header,
+.detail-header {
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 20px;
 }
 
 .site-title {
@@ -70,23 +89,44 @@ header {
 	text-align: center;
 }
 
+.nav {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	height: 32px;
+}
+
+.frontpage-header .nav {
+	justify-content:flex-end;
+}
+
 .toggle {
 	display: block;
 	font-size: 20px;
-	position: absolute;
-	right: 20px;
-	top: 20px;
 	appearance: none;
 	border: none;
 	background: none;
+	color: #888;
 }
 
 
-.showing-header,
-.popular-header {
+
+.nav .back {
+	color: #fff;
+}
+
+.section-header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.section-header .block-title {
+	margin-bottom: 0px;
 }
 
 .popular-list,
@@ -208,14 +248,14 @@ header {
 	padding: 20px;
 	background: #fff;
 	position: relative;
-	top: -30px;
+	top: -50px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 	margin: 0 -20px;
 }
 
 .detail-page .cover img {
-	margin: -20px -20px 0; 
+	margin: -50px -20px 0; 
 	width: calc(100% + 40px);
 }
 

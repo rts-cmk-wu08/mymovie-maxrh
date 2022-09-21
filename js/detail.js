@@ -34,7 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         headerElm.innerHTML = `
-            <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+            <div class="nav">
+                <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
+                <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+
+            </div>
+
             <div class="cover"><img src="${imgURL}${movie.backdrop_path}" alt="${movie.title}"></div>       
             `
         
@@ -54,7 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>${movie.overview}</p>
                 </section>
                 <section class="movie-cast">
-                    <h2 class="block-title">Cast</h2>
+                    <header class="section-header">
+                        <h2 class="block-title">Cast</h2>
+                        <a href="#" class="btn">See more</a>
+                    </header>
                     <ul class="movie-cast__list"></ul>
                 </section>
             `
