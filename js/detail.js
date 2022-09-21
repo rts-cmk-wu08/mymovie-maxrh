@@ -21,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(movie => {
 
-        console.log(movie)
-
         let movieRating = movie.vote_average.toFixed(1)
         let releaseDate = movie.release_date
         
@@ -85,18 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
             
                     let listItem = document.createElement("li")
                     listItem.classList.add("listItem")
-    
-                    listItem.innerHTML = `
+                    
+                    if (cast.profile_path) {
+                        listItem.innerHTML = `
                         <img src="${imgURL}${cast.profile_path}" alt="${cast.name}">
                         <h1>${cast.name}</h1>
                         `
-                    
+                    } else {
+                        listItem.innerHTML = `
+                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=No+Foto" alt="${cast.name}">
+                        <h1>${cast.name}</h1>
+                        `
+                    }
+
                     castList.append(listItem)
+
                 })
             
         })
         
     })
+
 
 })
 

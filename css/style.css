@@ -139,7 +139,9 @@ header {
 .showing-list {
 	flex-direction: row;
 	overflow-y: scroll;
+	
 }
+
 
 .popular-list {
 	flex-direction: column;
@@ -275,6 +277,7 @@ header {
 	margin: 0 -5px;
 	overflow-y: scroll;
 }
+
 
 .movie-cast__list .listItem {
 	display: flex;

@@ -17,25 +17,29 @@ function timeConvert(n) {
 
 function setDarkmode() {
 
-    let buttonIcon = document.getElementById("toggleIcon")
+    setTimeout(() => {
 
-    if ( localStorage.getItem("darkmode") !== null ) {
-        if ( localStorage.getItem("darkmode") == "true" ) {
-            bodyElm.classList.add("darkmode")
+        let buttonIcon = document.getElementById("toggleIcon")
 
-            if ( buttonIcon.classList.contains("fa-toggle-off") ) {
-                buttonIcon.classList.toggle("fa-toggle-off")
-                buttonIcon.classList.toggle("fa-toggle-on")
+        if ( localStorage.getItem("darkmode") !== null ) {
+            if ( localStorage.getItem("darkmode") == "true" ) {
+                bodyElm.classList.add("darkmode")
+
+                if ( buttonIcon.classList.contains("fa-toggle-off")) {
+                    buttonIcon.classList.toggle("fa-toggle-off")
+                    buttonIcon.classList.toggle("fa-toggle-on")
+                } else {
+                    buttonIcon.classList.add("fa-toggle-on")
+                }
+
             } else {
-                buttonIcon.classList.add("fa-toggle-on")
+                bodyElm.classList.remove("darkmode")
             }
-
         } else {
-            bodyElm.classList.remove("darkmode")
+            return
         }
-    } else {
-        return
-    }
+
+    }, 200)
 }
 
 function darkmodeToggle() {
@@ -59,3 +63,5 @@ function darkmodeToggle() {
     } 
 
 }
+
+
