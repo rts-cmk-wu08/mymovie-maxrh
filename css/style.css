@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
 
 
+
 * {
 	padding: 0;
 	margin: 0;
@@ -127,6 +128,10 @@ header {
 	margin-bottom: 20px;
 }
 
+section.showing {
+	overflow: hidden;
+}
+
 .section-header .block-title {
 	margin-bottom: 0px;
 }
@@ -142,9 +147,7 @@ header {
 .showing-list {
 	flex-direction: row;
 	overflow-y: scroll;
-	
 }
-
 
 .popular-list {
 	flex-direction: column;
@@ -213,12 +216,13 @@ header {
 	background: #DBE3FF;
 	color: rgb(38, 74, 160, .75);
 	padding: 4px 12px;
-	font-size: 8px;
+	font-size: 10px;
+	font-weight: 700;
 	text-transform: uppercase;
 	border-radius: 100px;
-	margin-right: 4px;
+	margin-right: 6px;
 	margin-bottom: 4px;
-	line-height: 14px;
+	line-height: 15px;
 
 	display: flex;
 	align-items: center;
