@@ -19,23 +19,24 @@ function setDarkmode() {
 
     let buttonIcon = document.getElementById("toggleIcon")
 
-
-    if (localStorage.getItem("darkmode") !== null) {
-        if (localStorage.getItem("darkmode") == "true") {
+    if ( localStorage.getItem("darkmode") !== null ) {
+        if ( localStorage.getItem("darkmode") == "true" ) {
             bodyElm.classList.add("darkmode")
-            buttonIcon.classList.remove("fa-toggle-off")
-            buttonIcon.classList.add("fa-toggle-on")
+
+            if ( buttonIcon.classList.contains("fa-toggle-off") ) {
+                buttonIcon.classList.toggle("fa-toggle-off")
+                buttonIcon.classList.toggle("fa-toggle-on")
+            } else {
+                buttonIcon.classList.add("fa-toggle-on")
+            }
+
         } else {
             bodyElm.classList.remove("darkmode")
-            buttonIcon.classList.add("fa-toggle-off")
-            buttonIcon.classList.remove("fa-toggle-on")
         }
     } else {
         return
     }
 }
-
-
 
 function darkmodeToggle() {
     

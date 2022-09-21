@@ -19,58 +19,54 @@ document.addEventListener("DOMContentLoaded", () => {
     
     fetch(`${baseURL}/movie/${id}?api_key=${apikey}&append_to_response=videos`)
         .then(response => response.json())
-        .then(data => {
+        .then(movie => {
 
-        let vote = data.vote_average.toFixed(1)
-    
+        console.log(movie)
+
+        let movieRating = movie.vote_average.toFixed(1)
+        let releaseDate = movie.release_date
+        
+        let [year, month, day] = releaseDate.split('-')
+        
+        let movieYear = [year][0]
+
+        let movieLanguage = languages.find(language => language.code == movie.original_language)        
+
+
         headerElm.innerHTML = `
             <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-            <div class="cover"><img src="${imgURL}${data.backdrop_path}" alt="${data.title}"></div>       
+            <div class="cover"><img src="${imgURL}${movie.backdrop_path}" alt="${movie.title}"></div>       
             `
         
         mainElm.innerHTML = `
                 <section class="movie-details">
-                    <h1 class="movie-title">${data.title}</h1>
-                    <span class="movie-rating"><i class="fa-solid fa-star"></i> ${vote}/10 IMDb</span>
+                    <h1 class="movie-title">${movie.title}</h1>
+                    <span class="movie-rating"><i class="fa-solid fa-star"></i> ${movieRating}/10 IMDb</span>
                     <ul class="movie-genres"></ul>
                     <ul class="movie-info">
-                        <li class="movie-info__length">Length<br> <strong>${timeConvert(data.runtime)}</strong></li>
-                        <li class="movie-info__language">Language<br> <strong>${data.original_language}</strong></li>
-                        <li class="movie-info__cert">Rating<br> <strong>${data.certification}</strong></li>
+                        <li class="movie-info__length">Length<br> <strong>${timeConvert(movie.runtime)}</strong></li>
+                        <li class="movie-info__language">Language<br> <strong>${movieLanguage.name}</strong></li>
+                        <li class="movie-info__cert">Release<br> <strong>${movieYear}</strong></li>
                     </ul>
                 </section>
                 <section class="movie-description">
                     <h2 class="block-title">Description</h2>
-                    <p>${data.overview}</p>
+                    <p>${movie.overview}</p>
                 </section>
                 <section class="movie-cast">
                     <h2 class="block-title">Cast</h2>
                     <ul class="movie-cast__list"></ul>
                 </section>
             `
-			
-            let genreList = document.querySelector(".movie-genres")
 
-            data.genres.forEach(genre => {
-
+            movie.genres.forEach(genre => {
+                let genreList = document.querySelector(".movie-genres")
                 let genreItem = document.createElement("li")
-						
 				genreItem.innerText = genre.name
-                
                 genreList.append(genreItem)
-
-
-                console.log(genre)
             })
 
-           
-
-
-
-
-
-
-        fetch(`${baseURL}/movie/${data.id}/credits?api_key=${apikey}`)
+        fetch(`${baseURL}/movie/${movie.id}/credits?api_key=${apikey}`)
             .then(response => response.json())
             .then(credits => {
 
@@ -88,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         `
                     
                     castList.append(listItem)
-                
                 })
             
         })
