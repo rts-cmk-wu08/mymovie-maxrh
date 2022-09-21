@@ -48,16 +48,21 @@ p {
 	margin: 0 0 20px;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 strong {
 	color: #000;
 }
 
-img {
-	max-width: 100%;
+section {
+	margin-bottom: 30px;
 }
 
-section {
-	margin-bottom: 20px;
+header {
+	margin-bottom: 5px;
 }
 
 .site-title {
@@ -65,30 +70,23 @@ section {
 	text-align: center;
 }
 
-.detail-header .toggle {
-	color: #fff;
-}
-
 .toggle {
 	display: block;
 	font-size: 20px;
 	position: absolute;
 	right: 20px;
-	top: 20px
+	top: 20px;
+	appearance: none;
+	border: none;
+	background: none;
 }
 
-.detail-page .content {
-	padding: 20px;
-	background: #fff;
-	position: relative;
-	top: -30px;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	margin: 0 -20px;
-}
 
-.cover img {
-	margin: -20px;
+.showing-header,
+.popular-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .popular-list,
@@ -151,6 +149,11 @@ section {
 	color: #f5c518;
 }
 
+.movie-details .movie-genres,
+.movie-details .movie-rating {
+	margin-bottom: 15px;
+}
+
 .movie-genres {
 	display: flex;
 	flex-direction: row;
@@ -176,16 +179,44 @@ section {
 	text-align: center;
 }
 
+.movie-details {
+	margin-bottom: 20px;
+}
+
 .movie-info {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 	list-style: none;
-	margin: 0 -15px 30px;
+	margin: 0 -10px;
 	max-width: 100%;
 }
 
 .movie-info li {
-	flex: 1 0 auto;
-	margin: 0 15px;
+	flex: 1 1 auto;
+	margin: 0 10px 5px;
+	max-width: 150px;
+}
+
+/* detail-page */
+
+.detail-page .toggle {
+	color: #fff;
+}
+
+.detail-page .content {
+	padding: 20px;
+	background: #fff;
+	position: relative;
+	top: -30px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	margin: 0 -20px;
+}
+
+.detail-page .cover img {
+	margin: -20px -20px 0; 
+	width: calc(100% + 40px);
 }
 
 
@@ -207,7 +238,7 @@ section {
 .movie-cast__list .listItem {
 	display: flex;
 	flex-direction: column;
-	margin: 0 5px;
+	margin: 0 5px 10px;
 	flex: 1 0 72px;
 }
 
@@ -224,4 +255,35 @@ section {
 	font-size: 12px;
 	font-weight: 400;
 	margin-bottom: 5px;
+}
+
+
+/* Darkmode */
+
+.darkmode {
+	background-color: #222;
+	color: #eee;
+}
+
+.darkmode h1,
+.darkmode h2,
+.darkmode h3,
+.darkmode h4,
+.darkmode h5,
+.darkmode h6,
+.darkmode strong {
+	color: #fff;
+}
+
+.detail-page.darkmode .content {
+	background-color: #222;
+}
+
+.darkmode .movie-rating {
+	color: #eee;
+}
+
+
+.darkmode .toggle {
+	color: #eee;
 }

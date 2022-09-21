@@ -14,14 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	showingElm.classList.add("showing")
 	mainElm.append(showingElm)
 
-	let popularElm = document.createElement("section")
-	popularElm.classList.add("popular")
-	mainElm.append(popularElm)
-   
+	let showingHeader = document.createElement("header")
+	showingHeader.classList.add("showing-header")
+	showingElm.append(showingHeader)
 
 	let showingList = document.createElement("ul")
 	showingList.classList.add("showing-list")
 	showingElm.append(showingList)
+
+	let popularElm = document.createElement("section")
+	popularElm.classList.add("popular")
+	mainElm.append(popularElm)
+
+	let popularHeader = document.createElement("header")
+	popularHeader.classList.add("popular-header")
+
+	popularElm.append(popularHeader)
 
 	let popularList = document.createElement("ul")
 	popularList.classList.add("popular-list")
@@ -34,7 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	headerElm.innerHTML = `
 			<h1 class="site-title">MyMovies</h1>
-			<span class="toggle"><i class="fa-solid fa-toggle-off"></i></span>
+			<button class="toggle" onclick="darkmodeToggle()"><i  id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+		`
+	
+	showingHeader.innerHTML = `
+			<h1>Now Showing</h1>
+			<a href="#">See more</a>
+		`
+
+	popularHeader.innerHTML = `
+			<h1>Popular</h1>
+			<a href="#">See more</a>
 		`
 
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
@@ -46,10 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				let listItem = document.createElement("li")
 				listItem.classList.add("listItem")
 
+				let movieURL = `detail.html?id=${movie.id}`
+
 				listItem.innerHTML = `
-					<img src="${imgURL}${movie.poster_path}" alt="${movie.title}">
+					<a href="${movieURL}"><img src="${imgURL}${movie.poster_path}" alt="${movie.title}"></a>
 					<div class="item-content">
-						<h1>${movie.title}</h1>
+						<h1><a href="${movieURL}">${movie.title}</a></h1>
 						<span class="movie-rating"><i class="fa-solid fa-star"></i> ${movie.vote_average}/10 IMDb</span>
 					</div>
 					`
@@ -69,15 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
 					.then(response => response.json())
 					.then(details => {
 
-					console.log(details.runtime)
-
 					let listItem = document.createElement("li")
 					listItem.classList.add("listItem")
 
+					let movieURL = `detail.html?id=${movie.id}`
+
 					listItem.innerHTML = `
-						<img src="${imgURL}${movie.poster_path}" alt="${movie.title}">
+						<a href="${movieURL}"><img src="${imgURL}${movie.poster_path}" alt="${movie.title}"></a>
 						<div class="item-content">
-							<h1>${movie.title}</h1>
+							<h1><a href="${movieURL}">${movie.title}</a></h1>
 							<span class="movie-rating"><i class="fa-solid fa-star"></i> ${movie.vote_average}/10 IMDb</span>
 							<ul class="movie-genres"></ul>
 							<span class="movie-runtime"><i class="fa-regular fa-clock"></i> ${timeConvert(details.runtime)}</span>
