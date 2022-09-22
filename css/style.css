@@ -372,7 +372,7 @@ header {
 
 	transform: translateY(-50%);
 	padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
-
+	pointer-events: all;
 }
 
 .modal .close {
