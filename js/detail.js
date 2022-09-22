@@ -209,13 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         bmIcon.classList.remove("fa-solid")
                     }
                 }
-
-                setDarkmode() 
-
             }
         
     })
 
+    window.onload = setDarkmode()
 
 })
 
