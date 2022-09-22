@@ -132,6 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+		window.onload = setDarkmode()
 
 })

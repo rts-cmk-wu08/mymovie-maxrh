@@ -66,7 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mainElm.innerHTML = `
                 <section class="movie-details">
-                    <h1 class="movie-title">${movie.title}</h1>
+                    <header class="movie-details__header">
+                        <h1 class="movie-title">${movie.title}</h1>
+                        <button id="bmBtn" class="bookmark" onclick="darkmodeToggle()"><i id="bmIcon" class="fa-regular fa-bookmark"></i></button>
+                    </header>
+                    
                     <span class="movie-rating"><i class="fa-solid fa-star"></i> ${movieRating}/10 IMDb</span>
                     <ul class="movie-genres"></ul>
                     <ul class="movie-info">
@@ -136,22 +140,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let playBtn = document.getElementById("playBtn")
 
-            playBtn.onclick = function() {
-                videoModal.style.display = "block"
-                if ( officialTrailer !== undefined ) {
-                    modalInner.innerHTML = `
-                        <span class="close">Click anywhere outside video to close</span>
-                        <div class="video_wrapper">
-                            <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
-                            src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
-                        </div>
-                    `
-                } else {
-                    return
+            if (playBtn) {
+
+                playBtn.onclick = function() {
+                    videoModal.style.display = "block"
+                    if ( officialTrailer !== undefined ) {
+                        modalInner.innerHTML = `
+                            <span class="close">Click anywhere outside video to close</span>
+                            <div class="video_wrapper">
+                                <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
+                                src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
+                            </div>
+                        `
+                    } else {
+                        return
+                    }
+
+                    videoModal.append(modalInner)
                 }
 
-                videoModal.append(modalInner)
-            }
+            } 
+
+
+
 
             window.onclick = function(event) {
                 if (event.target == videoModal) {
@@ -161,6 +172,47 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
+
+            let bmBtn = document.getElementById("bmBtn")
+
+            bmBtn.onclick = function() {
+
+                let bmIcon = document.getElementById("bmIcon")
+
+                if ( bmIcon.classList.contains("fa-regular") ) {
+                    bmIcon.classList.remove("fa-regular")
+                    bmIcon.classList.add("fa-solid")
+
+                    localStorage.setItem("bm-" + movie.id, "true")
+
+                } else {
+                    bmIcon.classList.add("fa-regular")
+                    bmIcon.classList.remove("fa-solid")
+
+                    localStorage.setItem("bm-" + movie.id, "false")
+                }
+                
+            }
+
+
+            window.onload = function () {
+
+                let bmKey = "bm-" + movie.id
+                let bmIcon = document.getElementById("bmIcon")
+
+                if ( localStorage.getItem(bmKey) !== null ) {
+                    if ( localStorage.getItem(bmKey) == "true" ) {
+                        bmIcon.classList.remove("fa-regular")
+                        bmIcon.classList.add("fa-solid")
+                    } else {
+                        bmIcon.classList.add("fa-regular")
+                        bmIcon.classList.remove("fa-solid")
+                    }
+                }
+
+                setDarkmode() 
+
+            }
         
     })
 

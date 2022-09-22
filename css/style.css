@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
 
 
@@ -26,10 +26,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 10px;
 	color: #111;
 	line-height: 1.25;
+	font-weight: 700;
 }
  
 h1 {
-	font-size: 24px;
+	font-size: 22px;
 }
 
 h2 {
@@ -111,6 +112,7 @@ header {
 	border: none;
 	background: none;
 	color: #111;
+	cursor: pointer;
 }
 
 
@@ -254,6 +256,27 @@ header {
 
 /* detail-page */
 
+.movie-details__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.movie-details__header .movie-title {
+	font-weight: 800;
+	padding-right: 30px;
+}
+
+.movie-details__header .bookmark {
+	padding: 5px;
+	font-size: 16px;
+	border: none;
+	background: none;
+	appearance: none;
+	float: right;
+	color: #111;
+}
+
 .detail-page .toggle {
 	color: #fff;
 }
@@ -268,6 +291,7 @@ header {
 	margin: 0 -30px;
 }
 
+#playBtn,
 .detail-page .cover img {
 	margin: -30px -30px 0; 
 	width: calc(100% + 60px);
@@ -298,18 +322,18 @@ header {
 	flex: 0 0 72px;
 }
 
-.movie-cast__list .listItem img {
+.movie-cast__list img {
 	max-width: 100%;
 	object-fit: cover;
 	object-position: 50% 25%;
 	height: 72px;
 	border-radius: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 }
 
-.movie-cast__list .listItem h1 {
+.movie-cast__list h1 {
 	font-size: 12px;
-	font-weight: 400;
+	font-weight: 700;
 	margin-bottom: 5px;
 }
 
@@ -332,19 +356,22 @@ header {
 	position: absolute;
 	top:0;
 	left:0;
-	height: calc(100% - 30px);
-	width: 100%;
+	right: 0;
+	height: 100%;
 
 	appearance: none;
 	border: none;
 	background: none;
 	color: #fff;
 	font-size: 12px;
+
+	cursor: pointer;
 }
 
 #playBtn i {
 	font-size: 40px;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 
@@ -452,7 +479,8 @@ header {
 .darkmode-on h5,
 .darkmode-on h6,
 .darkmode-on strong,
-.frontpage.darkmode-on .toggle {
+.frontpage.darkmode-on .toggle,
+.darkmode-on .bookmark {
 	color: #fff;
 	animation-name: darkmodeTitleFadeIn;
  	animation-duration: 1s;
@@ -465,7 +493,8 @@ header {
 .darkmode-off h5,
 .darkmode-off h6,
 .darkmode-off strong,
-.frontpage.darkmode-off .toggle {
+.frontpage.darkmode-off .toggle,
+.darkmode-off .bookmark {
 	color: #111;
 	animation-name: darkmodeTitleFadeOut;
  	animation-duration: 1s;
