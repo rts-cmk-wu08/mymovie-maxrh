@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 videoModal.style.display = "block"
                 if ( officialTrailer !== undefined ) {
                     modalInner.innerHTML = `
-                        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                        <span class="close">Click anywhere outside video to close</span>
                         <div class="video_wrapper">
                             <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
                             src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
