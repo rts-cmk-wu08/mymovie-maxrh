@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let movieLanguage = languages.find(language => language.code == movie.original_language)        
 
-        let officialTrailer = movie.videos.results.find(video => video.name == "Official Trailer")    
+        let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )    
+        
 
         headerElm.innerHTML = `
             <div class="nav">
@@ -64,20 +65,51 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="#" class="btn">See more</a>
                     </header>
                     <ul class="movie-cast__list"></ul>
-
-                    <div id="videoModal" class="modal">
-                        <span class="close"><i class="fa-solid fa-xmark"></i></span>
-                        <div class="video_wrapper">
-                        <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
-                            src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
-                        </div>
-                    </div>
                 </section>
             `
 
+            movie.genres.forEach(genre => {
+                let genreList = document.querySelector(".movie-genres")
+                let genreItem = document.createElement("li")
+				genreItem.innerText = genre.name
+                genreList.append(genreItem)
+            })
+
+
+
+
+
+            console.log(movie.videos.results)
+        
             let videoModal = document.getElementById("videoModal")
+
+            let modalInner = document.createElement("div")
+            modalInner.classList.add("modal-inner")
+
+
+            modalInner.innerHTML = `
+                    <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                    <div class="video_wrapper">
+                        <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
+                        src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
+                    </div>
+                `
+
+
+            if ( officialTrailer.key ) {
+                videoModal.append(modalInner)
+                
+            } else {
+
+                return
+
+            }
+
+
             let playBtn = document.getElementById("playBtn")
             let closeBtn = document.getElementsByClassName("close")[0]
+
+            
 
             playBtn.onclick = function() {
                 videoModal.style.display = "block"
@@ -94,12 +126,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            movie.genres.forEach(genre => {
-                let genreList = document.querySelector(".movie-genres")
-                let genreItem = document.createElement("li")
-				genreItem.innerText = genre.name
-                genreList.append(genreItem)
-            })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         fetch(`${baseURL}/movie/${movie.id}/credits?api_key=${apikey}`)
@@ -108,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 let casts = credits.cast
                 let castList = document.querySelector(".movie-cast__list")
-
+                
                 casts.forEach(cast => {
             
                     let listItem = document.createElement("li")
@@ -131,6 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             
         })
+
+            
         
     })
 
