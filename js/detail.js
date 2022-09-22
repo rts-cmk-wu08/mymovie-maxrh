@@ -130,10 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 })
             
-        })
+            })
 
 
-        
             let videoModal = document.getElementById("videoModal")
             let modalInner = document.createElement("div")
             modalInner.classList.add("modal-inner")
@@ -152,17 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                 src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
                             </div>
                         `
-                    } else {
-                        return
-                    }
+                    } 
 
                     videoModal.append(modalInner)
                 }
 
             } 
-
-
-
 
             window.onclick = function(event) {
                 if (event.target == videoModal) {
@@ -194,8 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
             }
 
-
-            window.onload = function () {
+            function setBookmark() {
 
                 let bmKey = "bm-" + movie.id
                 let bmIcon = document.getElementById("bmIcon")
@@ -208,12 +201,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         bmIcon.classList.add("fa-regular")
                         bmIcon.classList.remove("fa-solid")
                     }
-                }
+                }                
             }
+
+
+            setBookmark()
+            setDarkmode() 
         
     })
 
-    window.onload = setDarkmode()
 
 })
 
