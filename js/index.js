@@ -28,14 +28,16 @@ function darkmodeToggle() {
     if (localStorage.getItem("darkmode") !== null) {
         if (localStorage.getItem("darkmode") == "true") {
             localStorage.setItem("darkmode", "false")
-            bodyElm.classList.remove("darkmode")
+            bodyElm.classList.remove("darkmode-on")
+            bodyElm.classList.add("darkmode-off")
         } else {
             localStorage.setItem("darkmode", "true")
-            bodyElm.classList.add("darkmode")
+            bodyElm.classList.add("darkmode-on")
+            bodyElm.classList.remove("darkmode-off")
         }
     } else {
         localStorage.setItem("darkmode", "true")
-        bodyElm.classList.add("darkmode")
+        bodyElm.classList.add("darkmode-on")
     } 
 
 }

@@ -97,13 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
 
-    
-
-            
-
-
-
-
 
         fetch(`${baseURL}/movie/${movie.id}/credits?api_key=${apikey}`)
             .then(response => response.json())
@@ -135,40 +128,28 @@ document.addEventListener("DOMContentLoaded", () => {
             
         })
 
-           
-            console.log(movie.videos.results)
-            console.log(officialTrailer)
+
         
             let videoModal = document.getElementById("videoModal")
-
             let modalInner = document.createElement("div")
             modalInner.classList.add("modal-inner")
 
-
-            if ( officialTrailer !== undefined ) {
-                
-                modalInner.innerHTML = `
-                    <span class="close"><i class="fa-solid fa-xmark"></i></span>
-                    <div class="video_wrapper">
-                        <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
-                        src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
-                    </div>
-                `
-
-            } else {
-
-                return
-
-            }
-
+                if ( officialTrailer !== undefined ) {
+                    modalInner.innerHTML = `
+                        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                        <div class="video_wrapper">
+                            <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
+                            src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
+                        </div>
+                    `
+                } else {
+                    return
+                }
 
             videoModal.append(modalInner)
 
-
             let playBtn = document.getElementById("playBtn")
             let closeBtn = document.getElementsByClassName("close")[0]
-
-            
 
             playBtn.onclick = function() {
                 videoModal.style.display = "block"
