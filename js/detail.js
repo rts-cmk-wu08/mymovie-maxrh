@@ -156,13 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
             window.onclick = function(event) {
                 if (event.target == videoModal) {
                     videoModal.style.display = "none"
+
+                    modalInner.innerHTML = ``
                 }
             }
-
-
-
-
-
 
         
     })
