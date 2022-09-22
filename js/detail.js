@@ -134,6 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let modalInner = document.createElement("div")
             modalInner.classList.add("modal-inner")
 
+            let playBtn = document.getElementById("playBtn")
+
+            playBtn.onclick = function() {
+                videoModal.style.display = "block"
                 if ( officialTrailer !== undefined ) {
                     modalInner.innerHTML = `
                         <span class="close"><i class="fa-solid fa-xmark"></i></span>
@@ -146,17 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return
                 }
 
-            videoModal.append(modalInner)
-
-            let playBtn = document.getElementById("playBtn")
-            let closeBtn = document.getElementsByClassName("close")[0]
-
-            playBtn.onclick = function() {
-                videoModal.style.display = "block"
-            }
-
-            closeBtn.onclick = function() {
-                videoModal.style.display = "none"
+                videoModal.append(modalInner)
             }
 
             window.onclick = function(event) {

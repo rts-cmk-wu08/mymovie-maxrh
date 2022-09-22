@@ -435,7 +435,7 @@ header {
 .darkmode-on h5,
 .darkmode-on h6,
 .darkmode-on strong,
-.darkmode-on .toggle {
+.frontpage.darkmode-on .toggle {
 	color: #fff;
 	animation-name: darkmodeTitleFadeIn;
  	animation-duration: 1s;
@@ -448,7 +448,7 @@ header {
 .darkmode-off h5,
 .darkmode-off h6,
 .darkmode-off strong,
-.darkmode-off .toggle {
+.frontpage.darkmode-off .toggle {
 	color: #111;
 	animation-name: darkmodeTitleFadeOut;
  	animation-duration: 1s;
