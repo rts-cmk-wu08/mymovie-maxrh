@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let popularHeader = document.createElement("header")
 	popularHeader.classList.add("section-header")
-
 	popularElm.append(popularHeader)
 
 	let popularList = document.createElement("ul")
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	headerElm.innerHTML = `
 			<h1 class="site-title">MyMovies</h1>
 			<div class="nav">
-				<button class="toggle" onclick="darkmodeToggle()"><i  id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+				<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
 			</div>
 		`
 	

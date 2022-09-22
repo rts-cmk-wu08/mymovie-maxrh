@@ -97,6 +97,7 @@ header {
 	left: 0;
 	top: 0;
 	height: 32px;
+	z-index: 1;
 }
 
 .frontpage-header .nav {
@@ -328,9 +329,10 @@ header {
 
 #playBtn {
 	position: absolute;
-	top:calc(50% - 20px);
-	left:50%;
-	transform: translate(-50%, -50%);
+	top:0;
+	left:0;
+	height: calc(100% - 30px);
+	width: 100%;
 
 	appearance: none;
 	border: none;
@@ -381,6 +383,7 @@ header {
 	line-height: 20px;
 	font-size: 32px;
 	float: right;
+	margin-top: 5px;
 }
 
 .modal {
@@ -403,7 +406,7 @@ header {
 /* Darkmode */
 
 .darkmode {
-	background-color: #222;
+	background-color: #111;
 	color: #eee;
 }
 
@@ -418,7 +421,7 @@ header {
 }
 
 .detail-page.darkmode .content {
-	background-color: #222;
+	background-color: #111;
 }
 
 .darkmode .movie-runtime,

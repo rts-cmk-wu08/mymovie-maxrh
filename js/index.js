@@ -5,6 +5,7 @@ const imgURL = "https://image.tmdb.org/t/p/w500"
 
 const bodyElm = document.querySelector("body")
 
+
 function timeConvert(n) {
     let num = n
     let hours = (num / 60)
@@ -15,39 +16,14 @@ function timeConvert(n) {
     return rhours + "h  " + rminutes + "min"
 }
 
-function setDarkmode() {
 
-    setTimeout(() => {
-
-        let buttonIcon = document.getElementById("toggleIcon")
-
-        if ( localStorage.getItem("darkmode") !== null ) {
-            if ( localStorage.getItem("darkmode") == "true" ) {
-                bodyElm.classList.add("darkmode")
-
-                if ( buttonIcon.classList.contains("fa-toggle-off")) {
-                    buttonIcon.classList.toggle("fa-toggle-off")
-                    buttonIcon.classList.toggle("fa-toggle-on")
-                } else {
-                    buttonIcon.classList.add("fa-toggle-on")
-                }
-
-            } else {
-                bodyElm.classList.remove("darkmode")
-            }
-        } else {
-            return
-        }
-
-    }, 200)
-}
 
 function darkmodeToggle() {
-    
-    let buttonIcon = document.getElementById("toggleIcon")
 
-    buttonIcon.classList.toggle("fa-toggle-off")
-    buttonIcon.classList.toggle("fa-toggle-on")
+    let toggleIcon = document.getElementById("toggleIcon")
+
+    toggleIcon.classList.toggle("fa-toggle-off")
+    toggleIcon.classList.toggle("fa-toggle-on")
 
     if (localStorage.getItem("darkmode") !== null) {
         if (localStorage.getItem("darkmode") == "true") {

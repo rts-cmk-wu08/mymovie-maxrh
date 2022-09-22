@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     headerElm.classList.add("header", "detail-header")
     wrapperELm.append(headerElm)
 
+    let headerNav = document.createElement("div")
+    headerNav.classList.add("nav")
+
+    headerNav.innerHTML = `
+
+        <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
+        <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+    
+        `
+    headerElm.append(headerNav)
+
+
     let mainElm = document.createElement("main")
     mainElm.classList.add("content", "detail-content")
     wrapperELm.append(mainElm)
@@ -14,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     footerElm.classList.add("footer", "detail-footer")
     wrapperELm.append(footerElm)
 
+   
+
+
     let params = new URLSearchParams(window.location.search) 
     let id = params.get("id")
     
@@ -21,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(movie => {
 
+            
         let movieRating = movie.vote_average.toFixed(1)
         let releaseDate = movie.release_date
         
@@ -30,18 +46,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let movieLanguage = languages.find(language => language.code == movie.original_language)        
 
-        let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )    
+        let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )
+
+
         
+        let movieCover = document.createElement("div")
+        movieCover.classList.add("cover")
 
-        headerElm.innerHTML = `
-            <div class="nav">
-                <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
-                <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-            </div>
-            <button id="playBtn"><i class="fa-solid fa-circle-play"></i><br>Play Trailer</button>
-            <div class="cover"><img src="${imgURL}${movie.backdrop_path}" alt="${movie.title}"></div>       
+        if ( officialTrailer !== undefined ) {
+            movieCover.innerHTML = `
+                <button id="playBtn"><i class="fa-solid fa-circle-play"></i><br>Play Trailer</button>
+                <img src="${imgURL}${movie.backdrop_path}" alt="${movie.title}">
             `
-
+        } else {
+            movieCover.innerHTML = `<img src="${imgURL}${movie.backdrop_path}" alt="${movie.title}">`
+        }
+        
+        headerElm.append(movieCover)
 
         mainElm.innerHTML = `
                 <section class="movie-details">
@@ -76,65 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
             })
 
 
-
-
-
-            console.log(movie.videos.results)
-        
-            let videoModal = document.getElementById("videoModal")
-
-            let modalInner = document.createElement("div")
-            modalInner.classList.add("modal-inner")
-
-
-            modalInner.innerHTML = `
-                    <span class="close"><i class="fa-solid fa-xmark"></i></span>
-                    <div class="video_wrapper">
-                        <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
-                        src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
-                    </div>
-                `
-
-
-            if ( officialTrailer.key ) {
-                videoModal.append(modalInner)
-                
-            } else {
-
-                return
-
-            }
-
-
-            let playBtn = document.getElementById("playBtn")
-            let closeBtn = document.getElementsByClassName("close")[0]
+    
 
             
-
-            playBtn.onclick = function() {
-                videoModal.style.display = "block"
-            }
-
-            closeBtn.onclick = function() {
-                videoModal.style.display = "none"
-            }
-
-            window.onclick = function(event) {
-                if (event.target == videoModal) {
-                    videoModal.style.display = "none"
-                }
-            }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -170,7 +135,60 @@ document.addEventListener("DOMContentLoaded", () => {
             
         })
 
+           
+            console.log(movie.videos.results)
+            console.log(officialTrailer)
+        
+            let videoModal = document.getElementById("videoModal")
+
+            let modalInner = document.createElement("div")
+            modalInner.classList.add("modal-inner")
+
+
+            if ( officialTrailer !== undefined ) {
+                
+                modalInner.innerHTML = `
+                    <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                    <div class="video_wrapper">
+                        <iframe id="ytplayer" type="text/html" frameborder="0" width="100%" height="100%" 
+                        src="https://www.youtube.com/embed/${officialTrailer.key}" allowfullscreen>
+                    </div>
+                `
+
+            } else {
+
+                return
+
+            }
+
+
+            videoModal.append(modalInner)
+
+
+            let playBtn = document.getElementById("playBtn")
+            let closeBtn = document.getElementsByClassName("close")[0]
+
             
+
+            playBtn.onclick = function() {
+                videoModal.style.display = "block"
+            }
+
+            closeBtn.onclick = function() {
+                videoModal.style.display = "none"
+            }
+
+            window.onclick = function(event) {
+                if (event.target == videoModal) {
+                    videoModal.style.display = "none"
+                }
+            }
+
+
+
+
+
+
         
     })
 
