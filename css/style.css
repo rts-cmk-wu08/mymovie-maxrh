@@ -83,7 +83,7 @@ header {
 	margin-bottom: 10px;
 }
 
-.frontpage-header {
+.header {
 	position: relative;
 	margin-bottom: 20px;
 }
@@ -106,6 +106,8 @@ header {
 	z-index: 1;
 }
 
+
+.list-header .nav,
 .frontpage-header .nav {
 	justify-content:flex-end;
 }
@@ -124,8 +126,6 @@ header {
 	cursor: pointer;
 }
 
-
-
 .nav .back {
 	color: #fff;
 	display: flex;
@@ -142,78 +142,72 @@ header {
 	margin-bottom: 20px;
 }
 
-
-
 .section-header .block-title {
 	margin-bottom: 0px;
 }
 
-section.showing {
-	margin-bottom: 0px;
-}
 
-.popular-list,
-.showing-list {
+
+/* Movie Lists */
+
+.ml {
 	display: flex;
+	flex-direction: column;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-.showing-list {
+.ml-item {
+	display: flex;
 	flex-direction: row;
+	margin-bottom: 15px;
+}
+
+.ml img {
+	width: 85px;
+	margin-right: 15px;
+	border-radius: 5px;
+	float: left;
+}
+
+.ml h1 {
+	font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.ml-horizontal {
+	flex-direction: row;
+	
 	overflow-y: scroll;
 	margin: 0 -30px;
-	padding: 0 30px 0px 22px;
+	padding: 0 30px 0px;
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none; 
 }
 
+.ml-horizontal::-webkit-scrollbar { width: 0 !important }
 
-.showing-list::-webkit-scrollbar { width: 0 !important }
-
-
-.popular-list {
-	flex-direction: column;
-}
-
-.listItem h1 {
-	font-size: 14px;
-	margin-bottom: 5px;
-}
-
-.listItem {
-	display: flex;
-	margin: 0 8px 16px;
-	padding: 0px;
-}
-
-.listItem img {
-	width: 100%;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	box-shadow: 0 5px 8px rgba(0,0,0, 0.1);
-	float: left;
-}
-
-.showing-list .listItem {
-	flex-direction: column;
-	flex: 1 0 125px;
-	margin-bottom: 0px;
-}
-
-.popular-list .listItem {
-	flex-direction: row;
-	flex: 0 1 auto;
-	margin-left: 0;
+.ml-horizontal img {
+	width: 125px;
+	margin-bottom: 15px;
 	margin-right: 0;
 }
 
-.popular-list .listItem img {
-	width: 85px;
+.ml-horizontal .ml-item {
+	flex-direction: column;
 	margin-right: 15px;
-	margin-bottom: 0px;
 }
+
+.moviecast-list img {
+	object-fit: cover;
+	object-position: 50% 25%;
+	width: 85px;
+	height: 85px;
+}
+
+
+/* Movie ELements */
 
 .movie-runtime,
 .movie-rating {
@@ -224,15 +218,6 @@ section.showing {
 
 .movie-rating i {
 	color: #f5c518;
-}
-
-
-.movie-details .movie-rating {
-	margin-bottom: 15px;
-}
-
-.movie-details .movie-genres {
-	margin-bottom: 11px;
 }
 
 .movie-genres {
@@ -261,8 +246,25 @@ section.showing {
 	text-align: center;
 }
 
+
+/* detail-page */
+
+.detail-header {
+	position: relative;
+	margin-bottom: -20px;
+}
+
 .movie-details {
 	margin-bottom: 22px;
+}
+
+
+.movie-details .movie-rating {
+	margin-bottom: 15px;
+}
+
+.movie-details .movie-genres {
+	margin-bottom: 11px;
 }
 
 .movie-info {
@@ -280,16 +282,12 @@ section.showing {
 	max-width: 150px;
 }
 
-/* detail-page */
 
 .detail-page {
 	padding: 0;
 }
 
-.detail-header {
-	position: relative;
-	margin-bottom: -20px;
-}
+
 
 
 .movie-details__header {
@@ -340,47 +338,6 @@ section.showing {
 	float: left;
 }
 
-
-/* detail-page -- Movie Cast */
-
-
-
-.movie-cast__list {
-	display: flex;
-	flex-direction: row;
-	list-style: none;
-	margin: 0 -30px;
-	padding: 0 30px 0 25px;
-	overflow-y: scroll;
-	padding-bottom: 10px;
-	overflow: -moz-scrollbars-none;
-	-ms-overflow-style: none; 
-}
-
-.movie-cast__list::-webkit-scrollbar { width: 0 !important }
-
-
-.movie-cast__list .listItem {
-	display: flex;
-	flex-direction: column;
-	margin: 0 5px 10px;
-	flex: 0 0 72px;
-}
-
-.movie-cast__list img {
-	max-width: 100%;
-	object-fit: cover;
-	object-position: 50% 25%;
-	height: 72px;
-	border-radius: 5px;
-	margin-bottom: 8px;
-}
-
-.movie-cast__list h1 {
-	font-size: 12px;
-	font-weight: 700;
-	margin-bottom: 5px;
-}
 
 
 /* footer */
@@ -504,12 +461,20 @@ section.showing {
 
 /* Darkmode */
 
+
+
 .darkmode-on {
 	background-color: #111;
 	color: #eee;
 	animation-name: darkmodeFadeIn;
  	animation-duration: 1s;
 }
+
+.darkmode {
+	background-color: #111;
+	color: #eee;
+}
+
 
 .darkmode-off {
 	background-color: #fff;
@@ -524,6 +489,12 @@ section.showing {
 	color: #eee;
 	animation-name: darkmodeFadeIn;
  	animation-duration: 1s;
+}
+
+.darkmode .frontpage-footer,
+.detail-page.darkmode  .content {
+	background-color: #111;
+	color: #eee;
 }
 
 .darkmode-off .frontpage-footer,
@@ -546,6 +517,18 @@ section.showing {
 	color: #fff;
 	animation-name: darkmodeTitleFadeIn;
  	animation-duration: 1s;
+}
+
+.darkmode h1,
+.darkmode h2,
+.darkmode h3,
+.darkmode h4,
+.darkmode h5,
+.darkmode h6,
+.darkmode strong,
+.frontpage.darkmode .toggle,
+.darkmode .bookmark {
+	color: #fff;
 }
 
 .darkmode-off h1,

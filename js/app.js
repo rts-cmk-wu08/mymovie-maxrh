@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	showingElm.append(showingHeader)
 
 	let showingList = document.createElement("ul")
-	showingList.classList.add("showing-list")
+	showingList.classList.add("ml", "ml-horizontal", "showing-list")
 	showingElm.append(showingList)
 
 	let popularElm = document.createElement("section")
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	popularElm.append(popularHeader)
 
 	let popularList = document.createElement("ul")
-	popularList.classList.add("popular-list")
+	popularList.classList.add("ml", "popular-list")
 	popularElm.append(popularList)
 
 	let footerElm = document.createElement("footer")
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			data.results.forEach(movie => {
 				
 				let listItem = document.createElement("li")
-				listItem.classList.add("listItem")
+				listItem.classList.add("ml-item")
 
 				let movieURL = `detail.html?id=${movie.id}`
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					.then(details => {
 
 					let listItem = document.createElement("li")
-					listItem.classList.add("listItem")
+					listItem.classList.add("ml-item")
 
 					let movieURL = `detail.html?id=${movie.id}`
 

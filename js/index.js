@@ -28,7 +28,7 @@ function darkmodeToggle() {
     if (localStorage.getItem("darkmode") !== null) {
         if (localStorage.getItem("darkmode") == "true") {
             localStorage.setItem("darkmode", "false")
-            bodyElm.classList.remove("darkmode-on")
+            bodyElm.classList.remove("darkmode")
             bodyElm.classList.add("darkmode-off")
         } else {
             localStorage.setItem("darkmode", "true")
@@ -49,18 +49,15 @@ function setDarkmode() {
 
     if ( localStorage.getItem("darkmode") !== null ) {
         if ( localStorage.getItem("darkmode") == "true" ) {
-            bodyElm.classList.add("darkmode-on")
-            bodyElm.classList.remove("darkmode-off")
+            bodyElm.classList.toggle("darkmode")
             toggleIcon.classList.add("fa-toggle-on")
             toggleIcon.classList.remove("fa-toggle-off")
 
         } else {
-            bodyElm.classList.remove("darkmode-on")
+            bodyElm.classList.toggle("darkmode")
             toggleIcon.classList.add("fa-toggle-off")
             toggleIcon.classList.remove("fa-toggle-on")
         }
-    } else {
-        return
-    }
+    } 
 
 }

@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h2 class="block-title">Cast</h2>
                         <a href="#" class="btn">See more</a>
                     </header>
-                    <ul class="movie-cast__list"></ul>
+                    <ul class="ml ml-horizontal moviecast-list"></ul>
                 </section>
             `
 
@@ -107,22 +107,22 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(credits => {
 
                 let casts = credits.cast
-                let castList = document.querySelector(".movie-cast__list")
+                let castList = document.querySelector(".moviecast-list")
                 
                 casts.forEach(cast => {
             
                     let listItem = document.createElement("li")
-                    listItem.classList.add("listItem")
+                    listItem.classList.add("ml-item")
                     
                     if (cast.profile_path) {
                         listItem.innerHTML = `
                         <img src="${imgURL}${cast.profile_path}" alt="${cast.name}">
-                        <h1>${cast.name}</h1>
+                        <h1 class="ml-title">${cast.name}</h1>
                         `
                     } else {
                         listItem.innerHTML = `
                         <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=No+Foto" alt="${cast.name}">
-                        <h1>${cast.name}</h1>
+                        <h1 class="ml-title">${cast.name}</h1>
                         `
                     }
 
