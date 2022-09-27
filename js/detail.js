@@ -11,11 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     headerNav.innerHTML = `
 
-        <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
+        <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
         <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
     
         `
+
     headerElm.append(headerNav)
+
+    console.log(history)
 
 
     let mainElm = document.createElement("main")
@@ -25,9 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let footerElm = document.createElement("footer")
     footerElm.classList.add("footer", "detail-footer")
     wrapperELm.append(footerElm)
-
-   
-
 
     let params = new URLSearchParams(window.location.search) 
     let id = params.get("id")
@@ -113,20 +113,22 @@ document.addEventListener("DOMContentLoaded", () => {
             
                     let listItem = document.createElement("li")
                     listItem.classList.add("ml-item")
-                    
-                    if (cast.profile_path) {
-                        listItem.innerHTML = `
-                        <img src="${imgURL}${cast.profile_path}" alt="${cast.name}">
+                 
+                    listItem.innerHTML = `
+                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=Loading" alt="${cast.name}">
                         <h1 class="ml-title">${cast.name}</h1>
                         `
-                    } else {
-                        listItem.innerHTML = `
-                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=No+Foto" alt="${cast.name}">
-                        <h1 class="ml-title">${cast.name}</h1>
-                        `
-                    }
 
                     castList.append(listItem)
+
+                    let imgElm = listItem.querySelector("img")
+                    let castImg = new Image()
+
+                    castImg.src = `${imgURL}${cast.profile_path}`
+
+                    castImg.onload = () => {
+                        imgElm.src = castImg.src
+                    }
 
                 })
             

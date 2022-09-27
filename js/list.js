@@ -60,8 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             data.results.forEach((movie, index) => {
 
-               
-
                 let listItem = document.createElement("li")
                 listItem.classList.add("ml-item")
 
@@ -78,9 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
 
                 movieList.append(listItem)
-
-                console.log(movie.title)
-
 
                 fetch(`${baseURL}/movie/${movie.id}?api_key=${apikey}`)
                 .then(response => response.json())
