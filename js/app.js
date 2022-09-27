@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	showingHeader.innerHTML = `
 			<h1 class="block-title">Now Showing</h1>
-			<a href="#" class="btn">See more</a>
+			<a href="list.html?id=now_playing" class="btn">See more</a>
 		`
 
 	popularHeader.innerHTML = `
 			<h1 class="block-title">Popular</h1>
-			<a href="#" class="btn">See more</a>
+			<a href="list.html?id=popular" class="btn">See more</a>
 		`
 
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
