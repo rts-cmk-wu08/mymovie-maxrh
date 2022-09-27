@@ -116,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     if (cast.profile_path) {
                         listItem.innerHTML = `
-                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=Loading" alt="${cast.name}">
+                        <img src="https://placehold.jp/10/fff/aaa/72x72.png?text=Loading" alt="${cast.name}">
                         <h1 class="ml-title">${cast.name}</h1>
                         `
                     } else {
                         listItem.innerHTML = `
-                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=No+Foto" alt="${cast.name}">
+                        <img src="https://placehold.jp/10/fff/aaa/72x72.png?text=No+Foto" alt="${cast.name}">
                         <h1 class="ml-title">${cast.name}</h1>
                         `
                     }

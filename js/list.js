@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let movieURL = `detail.html?id=${movie.id}`
 
                 listItem.innerHTML = `
-                    <a href="${movieURL}"><img src="https://placehold.jp/10/fff/ddd/85x127.png?text=Loading" alt="${movie.title}"></a>
+                    <a href="${movieURL}"><img src="https://placehold.jp/10/fff/aaa/85x127.png?text=Loading" alt="${movie.title}"></a>
                     <div class="item-content">
                         <h1><a href="${movieURL}">${movie.title}</a></h1>
                         <span class="movie-rating"><i class="fa-solid fa-star"></i> ${movie.vote_average}/10 IMDb</span>

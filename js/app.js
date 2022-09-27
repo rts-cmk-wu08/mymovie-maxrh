@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				let movieURL = `detail.html?id=${movie.id}`
 
 				listItem.innerHTML = `
-					<a href="${movieURL}"><img src="${imgURL}${movie.poster_path}" alt="${movie.title}"></a>
+                    <a href="${movieURL}"><img src="https://placehold.jp/10/fff/aaa/85x127.png?text=Loading" alt="${movie.title}"></a>
 					<div class="item-content">
 						<h1><a href="${movieURL}">${movie.title}</a></h1>
 						<span class="movie-rating"><i class="fa-solid fa-star"></i> ${movie.vote_average}/10 IMDb</span>
@@ -76,6 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
 					`
 				
 				showingList.append(listItem)
+
+				let imgElm = listItem.querySelector("img")
+				let posterImg = new Image()
+
+				posterImg.src = `${imgURL}${movie.poster_path}`
+
+				posterImg.onload = () => {
+					imgElm.src = posterImg.src
+				}
+
+				
 			})
 		})
 
@@ -96,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					let movieURL = `detail.html?id=${movie.id}`
 
 					listItem.innerHTML = `
-						<a href="${movieURL}"><img src="${imgURL}${movie.poster_path}" alt="${movie.title}"></a>
+                    	<a href="${movieURL}"><img src="https://placehold.jp/10/fff/aaa/85x127.png?text=Loading" alt="${movie.title}"></a>
 						<div class="item-content">
 							<h1><a href="${movieURL}">${movie.title}</a></h1>
 							<span class="movie-rating"><i class="fa-solid fa-star"></i> ${movie.vote_average}/10 IMDb</span>
@@ -104,6 +115,16 @@ document.addEventListener("DOMContentLoaded", () => {
 							<span class="movie-runtime"><i class="fa-regular fa-clock"></i> ${timeConvert(details.runtime)}</span>
 						</div>
 						`
+
+					let imgElm = listItem.querySelector("img")
+					let posterImg = new Image()
+
+					posterImg.src = `${imgURL}${movie.poster_path}`
+
+					posterImg.onload = () => {
+						imgElm.src = posterImg.src
+					}
+
 
 					popularList.append(listItem)
 
