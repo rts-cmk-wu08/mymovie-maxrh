@@ -113,13 +113,21 @@ document.addEventListener("DOMContentLoaded", () => {
             
                     let listItem = document.createElement("li")
                     listItem.classList.add("ml-item")
-                 
-                    listItem.innerHTML = `
+                    
+                    if (cast.profile_path) {
+                        listItem.innerHTML = `
                         <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=Loading" alt="${cast.name}">
                         <h1 class="ml-title">${cast.name}</h1>
                         `
+                    } else {
+                        listItem.innerHTML = `
+                        <img src="https://placehold.jp/10/fff/ddd/72x72.png?text=No+Foto" alt="${cast.name}">
+                        <h1 class="ml-title">${cast.name}</h1>
+                        `
+                    }
 
                     castList.append(listItem)
+
 
                     let imgElm = listItem.querySelector("img")
                     let castImg = new Image()
@@ -131,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                 })
+
+
+                
             
             })
 
