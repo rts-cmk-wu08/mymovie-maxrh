@@ -506,6 +506,8 @@ section.showing {
  	animation-duration: 1s;
 }
 
+
+.darkmode .nav .back,
 .darkmode h1,
 .darkmode h2,
 .darkmode h3,
@@ -518,6 +520,7 @@ section.showing {
 	color: #fff;
 }
 
+.darkmode-on .nav .back,
 .darkmode-on h1,
 .darkmode-on h2,
 .darkmode-on h3,
@@ -532,6 +535,7 @@ section.showing {
  	animation-duration: 1s;
 }
 
+.darkmode-off .nav .back,
 .darkmode-off h1,
 .darkmode-off h2,
 .darkmode-off h3,
@@ -544,6 +548,11 @@ section.showing {
 	color: #111;
 	animation-name: darkmodeTitleFadeOut;
  	animation-duration: 1s;
+}
+
+
+.detail-header .nav .back {
+	color: #fff !important;
 }
 
 
