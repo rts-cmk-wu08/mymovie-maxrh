@@ -16,8 +16,6 @@ function timeConvert(n) {
     return rhours + "h  " + rminutes + "min"
 }
 
-
-
 function darkmodeToggle() {
 
     let toggleIcon = document.getElementById("toggleIcon")
@@ -41,10 +39,8 @@ function darkmodeToggle() {
         bodyElm.classList.add("darkmode-on")
         bodyElm.classList.remove("darkmode")
     } 
-
 }
 
-      
 function setDarkmode() {
 
     let toggleIcon = document.getElementById("toggleIcon")
@@ -61,6 +57,5 @@ function setDarkmode() {
             toggleIcon.classList.remove("fa-toggle-on")
         }
     } 
-
 }
 

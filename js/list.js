@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (id == "popular") {
         blockTitle.innerText = `Popular`
     } else if (id == "now_playing") {
-        blockTitle.innerText = `Showing`
+        blockTitle.innerText = `Now Showing`
     }
 
 	contentHeader.append(blockTitle)
