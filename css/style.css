@@ -1,0 +1,583 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+
+
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Mulish', sans-serif;
+	font-size: 13px;
+	margin: 0px;
+	font-weight: 400;
+	color: #888;
+	line-height: 1.6;
+	padding: 30px;
+	width: 100%;
+	max-width: 100%;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 10px;
+	color: #111;
+	line-height: 1.25;
+	font-weight: 700;
+}
+ 
+h1 {
+	font-size: 22px;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+.block-title {
+	font-family: 'Merriweather', serif;
+	font-size: 16px;
+	line-height: 26px;
+	margin-bottom: 10px;
+}
+
+hr {
+	margin: 20px 0px;
+}
+
+p {
+	margin: 0 0 20px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+strong {
+	color: #111;
+}
+
+.btn {
+	font-size: 12px;
+	border: 1px solid rgb(187, 187, 187, .25);
+	border-radius: 50px;
+	line-height: 16px;
+	padding: 4px 12px;
+	color: #bbb;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
+header {
+	margin-bottom: 10px;
+}
+
+.header {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.site-title {
+	font-size: 18px;
+	line-height: 32px;
+	text-align: center;
+	font-weight: 800;
+}
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	height: 32px;
+	z-index: 1;
+}
+
+
+.frontpage-header .nav {
+	justify-content:flex-end;
+}
+
+.detail-header .nav {
+	margin: 30px 30px 0;
+}
+
+.toggle {
+	display: block;
+	font-size: 20px;
+	appearance: none;
+	border: none;
+	background: none;
+	color: #111;
+	cursor: pointer;
+}
+
+.nav .back {
+	color: #111;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	padding: 5px;
+	margin-left: -5px;
+}
+
+.section-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.section-header .block-title {
+	margin-bottom: 0px;
+}
+
+section.showing {
+	margin-bottom: 0;
+}
+
+/* Movie Lists */
+
+.ml {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ml-item {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 15px;
+}
+
+.ml img {
+	width: 85px;
+	margin-right: 15px;
+	border-radius: 5px;
+	float: left;
+}
+
+.ml h1 {
+	font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.ml-horizontal {
+	flex-direction: row;
+	
+	overflow-y: scroll;
+	margin: 0 -30px;
+	padding: 0 30px 0px;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none; 
+}
+
+.ml-horizontal::-webkit-scrollbar { width: 0 !important }
+
+.ml-horizontal img {
+	width: 125px;
+	margin-bottom: 15px;
+	margin-right: 0;
+}
+
+.ml-horizontal .ml-item {
+	flex-direction: column;
+	margin-right: 15px;
+}
+
+.moviecast-list img {
+	object-fit: cover;
+	object-position: 50% 25%;
+	width: 85px;
+	height: 85px;
+}
+
+
+/* Movie ELements */
+
+.movie-runtime,
+.movie-rating {
+	color: #aaa;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.movie-rating i {
+	color: #f5c518;
+}
+
+.movie-genres {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	list-style: none;
+	margin-bottom: 6px;
+}
+
+.movie-genres li {
+	flex: 0 0 auto;
+	background: #DBE3FF;
+	color: rgb(38, 74, 160, .5);
+	padding: 2px 12px;
+	font-size: 8px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 100px;
+	margin-right: 6px;
+	margin-bottom: 4px;
+	line-height: 14px;
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+
+/* detail-page */
+
+.detail-header {
+	position: relative;
+	margin-bottom: -20px;
+}
+
+.movie-details {
+	margin-bottom: 22px;
+}
+
+
+.movie-details .movie-rating {
+	margin-bottom: 15px;
+}
+
+.movie-details .movie-genres {
+	margin-bottom: 11px;
+}
+
+.movie-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	list-style: none;
+	max-width: 100%;
+
+}
+
+.movie-info li {
+	flex: 0 0 auto;
+	margin: 0 30px 5px 0px;
+	max-width: 150px;
+}
+
+
+.detail-page {
+	padding: 0;
+}
+
+
+
+
+.movie-details__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 15px;
+}
+
+.movie-details__header .movie-title {
+	font-weight: 800;
+	padding-right: 30px;
+	margin-bottom: 5px;
+}
+
+.movie-details__header .bookmark {
+	padding: 5px;
+	font-size: 16px;
+	border: none;
+	background: none;
+	appearance: none;
+	float: right;
+	color: #111;
+}
+
+.movie-details__header .bookmark .fa-solid {
+	color: #f5c518;
+}
+
+.detail-page .toggle {
+	color: #fff;
+}
+
+.detail-page .content {
+	padding: 30px;
+	background: #fff;
+	position: relative;
+	top: 0px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	box-shadow: 0 -10px 15px rgba(0,0,0,0.1);
+}
+
+#playBtn,
+.detail-page .cover img {
+	margin: 0; 
+	width: 100% ;
+	float: left;
+}
+
+
+
+/* footer */
+
+.frontpage-footer {
+	background: #fff;
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	bottom:0;
+	margin: 0 -30px;
+	padding: 30px;
+	box-shadow: 0 0px 15px rgba(0,0,0, .1);
+}
+
+/* YouTube PLayer */
+
+.video_wrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
+}
+
+#ytplayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#playBtn {
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	bottom: 20px;
+
+	appearance: none;
+	border: none;
+	background: none;
+	color: #fff;
+	font-size: 12px;
+
+	cursor: pointer;
+}
+
+
+#playBtn i {
+	font-size: 40px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+
+/* Modal */
+
+
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+	padding: 30px;
+}
+
+.modal .modal-inner {
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
+	max-width: 150vmin;
+	margin: 0 auto;
+}
+
+.modal .video_wrapper {
+	top:calc(50% - 0px);
+
+	transform: translateY(-50%);
+	padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
+	pointer-events: all;
+}
+
+.modal .close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	pointer-events: none;
+	position: absolute;
+	top:8px;
+	left:0;
+	right:0;
+	color: #aaa;
+}
+
+.modal .close i {
+	margin-right: 5px;
+}
+
+.modal {
+	animation-name: modalFade;
+ 	animation-duration: 1s;
+}
+
+@keyframes modalFade {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+
+.hidden {
+	display: none;
+}
+
+
+
+/* Darkmode */
+
+
+
+.darkmode-on {
+	background-color: #111;
+	color: #eee;
+	animation-name: darkmodeFadeIn;
+ 	animation-duration: 1s;
+}
+
+.darkmode {
+	background-color: #111;
+	color: #eee;
+}
+
+
+.darkmode-off {
+	background-color: #fff;
+	color: #888;
+	animation-name: darkmodeFadeOut;
+ 	animation-duration: 1s;
+}
+
+.darkmode-on .frontpage-footer,
+.detail-page.darkmode-on .content {
+	background-color: #111;
+	color: #eee;
+	animation-name: darkmodeFadeIn;
+ 	animation-duration: 1s;
+}
+
+.darkmode .frontpage-footer,
+.detail-page.darkmode  .content {
+	background-color: #111;
+	color: #eee;
+}
+
+.darkmode-off .frontpage-footer,
+.detail-page.darkmode-off .content {
+	background-color: #fff;
+	color: #888;
+	animation-name: darkmodeFadeOut;
+ 	animation-duration: 1s;
+}
+
+
+.darkmode .back,
+.darkmode h1,
+.darkmode h2,
+.darkmode h3,
+.darkmode h4,
+.darkmode h5,
+.darkmode h6,
+.darkmode strong,
+.darkmode .toggle,
+.darkmode .bookmark {
+	color: #fff;
+}
+
+.darkmode-on .back,
+.darkmode-on h1,
+.darkmode-on h2,
+.darkmode-on h3,
+.darkmode-on h4,
+.darkmode-on h5,
+.darkmode-on h6,
+.darkmode-on strong,
+.darkmode-on .toggle,
+.darkmode-on .bookmark {
+	color: #fff;
+	animation-name: darkmodeTitleFadeIn;
+ 	animation-duration: 1s;
+}
+
+.darkmode-off .back,
+.darkmode-off h1,
+.darkmode-off h2,
+.darkmode-off h3,
+.darkmode-off h4,
+.darkmode-off h5,
+.darkmode-off h6,
+.darkmode-off strong,
+.darkmode-off .toggle,
+.darkmode-off .bookmark {
+	color: #111;
+	animation-name: darkmodeTitleFadeOut;
+ 	animation-duration: 1s;
+}
+
+.detail-header .nav .toggle,
+.detail-header .nav .back {
+	color: #fff !important;
+}
+
+
+@keyframes darkmodeTitleFadeIn {
+	from {color: #111;}
+	to {color: #fff;}
+}
+
+@keyframes darkmodeTitleFadeOut {
+	from {color: #fff;}
+	to {color: #111;}
+}
+
+@keyframes darkmodeFadeIn {
+	from {background-color: #fff; color: #888;}
+	to {background-color: #111; color: #eee;}
+}
+
+@keyframes darkmodeFadeOut {
+	from {background-color: #111; color: #eee;}
+	to {background-color: #fff; color: #888;}
+}
+
+
+
+
+/* Infinity load */
+
