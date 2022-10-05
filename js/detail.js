@@ -1,8 +1,8 @@
 
-	import { genres } from "../data/genres.js"
     import { languages } from "../data/languages.js"
     import { makeElement } from "../modules/makeElement.js"
-    
+    import genreSpan from "../modules/genreSpan.js"
+
     
     let wrapperELm = document.querySelector(".wrapper")
 
@@ -96,12 +96,11 @@
                     <ul class="ml ml-horizontal moviecast-list"></ul>
                 </section>
             `
+            
+            let genreList = document.querySelector(".movie-genres")
 
             movie.genres.forEach(genre => {
-                let genreList = document.querySelector(".movie-genres")
-                let genreItem = document.createElement("li")
-				genreItem.innerText = genre.name
-                genreList.append(genreItem)
+                genreList.append(genreSpan(genre))
             })
 
 

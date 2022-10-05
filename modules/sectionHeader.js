@@ -1,9 +1,18 @@
-let sectionHeader = function (text) {
+let sectionHeader = function (headline, btnText, btnLink) {
     let element = document.createElement("header")
+    element.classList.add("section-header")
 
-    element.innerHTML = `
-        <h2>${text}</h2>
+    if (btnText) {
+        element.innerHTML = `
+        <h2 class="block-title">${headline}</h2>
+        <a href="${btnLink}" class="btn">${btnText}</a>
     `
+
+    } else {
+        element.innerHTML = `
+        <h2 class="block-title">${headline}</h2>
+    `
+    }
     
     return element
 }

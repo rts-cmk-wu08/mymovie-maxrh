@@ -1,17 +1,18 @@
  
-    import { genres } from "../data/genres.js"
     import { makeElement } from "../modules/makeElement.js"
 
     import header from "../modules/header.js"
     import sectionHeader from "../modules/sectionHeader.js"
 
-    
+    import genreSpan from "../modules/genreSpan.js"
+
     let wrapperELm = document.querySelector(".wrapper")
 
     // let testElm = makeElement("div", "test")
-    wrapperELm.append(header())
-    wrapperELm.append(sectionHeader("My headline"))
-
+    // wrapperELm.append(header())
+    
+    let params = new URLSearchParams(window.location.search) 
+    let id = params.get("id")
 
     let headerElm = document.createElement("header")
     headerElm.classList.add("header", "list-header")
@@ -38,28 +39,21 @@
 	sectionElm.classList.add("content")
 	mainElm.append(sectionElm)
 
-	let contentHeader = document.createElement("header")
-	contentHeader.classList.add("section-header")
-	sectionElm.append(contentHeader)
+
+    if (id == "popular") {
+        sectionElm.append(sectionHeader("Popular", "", ""))
+
+    } else if (id == "now_playing") {
+        sectionElm.append(sectionHeader("Now Showing", "", ""))
+
+    }
+
 
     let movieList = document.createElement("ul")
     movieList.setAttribute('id', 'card-container') 
     movieList.classList.add("ml")
     sectionElm.append(movieList)
 
-    let params = new URLSearchParams(window.location.search) 
-    let id = params.get("id")
-    
-    let blockTitle = document.createElement("h1")
-	blockTitle.classList.add("block-title")
-
-    if (id == "popular") {
-        blockTitle.innerText = `Popular`
-    } else if (id == "now_playing") {
-        blockTitle.innerText = `Now Showing`
-    }
-
-	contentHeader.append(blockTitle)
 
     let popularPage = 1
 
@@ -100,13 +94,14 @@
 
 					movie.genre_ids.forEach(id => {
 
-						let currentGenre = genres.find(genre => genre.id == id)
+						//let currentGenre = genres.find(genre => genre.id == id)
 
-						let genreItem = document.createElement("li")
+						//let genreItem = document.createElement("li")
 						
-						genreItem.innerText = currentGenre.name
-
-						genreList.append(genreItem)
+						//genreItem.innerText = currentGenre.name
+                        console.log(id)
+                        
+						genreList.append(genreSpan(id))
 
 					})
 

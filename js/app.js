@@ -1,6 +1,7 @@
 
-	import { genres } from "../data/genres.js"
     import { makeElement } from "../modules/makeElement.js"
+    import genreSpan from "../modules/genreSpan.js"
+    import sectionHeader from "../modules/sectionHeader.js"
 
 	let wrapperELm = document.querySelector(".wrapper")
 
@@ -15,10 +16,8 @@
 	let showingElm = document.createElement("section")
 	showingElm.classList.add("showing")
 	mainElm.append(showingElm)
-
-	let showingHeader = document.createElement("header")
-	showingHeader.classList.add("section-header")
-	showingElm.append(showingHeader)
+	
+	showingElm.append(sectionHeader("Now Showing", "See more", "list.html?id=now_playing"))
 
 	let showingList = document.createElement("ul")
 	showingList.classList.add("ml", "ml-horizontal", "showing-list")
@@ -28,9 +27,7 @@
 	popularElm.classList.add("popular")
 	mainElm.append(popularElm)
 
-	let popularHeader = document.createElement("header")
-	popularHeader.classList.add("section-header")
-	popularElm.append(popularHeader)
+	popularElm.append(sectionHeader("Popular", "See more", "list.html?id=popular"))
 
 	let popularList = document.createElement("ul")
 	popularList.classList.add("ml", "popular-list")
@@ -48,16 +45,6 @@
 			</div>
 		`
 	
-	showingHeader.innerHTML = `
-			<h1 class="block-title">Now Showing</h1>
-			<a href="list.html?id=now_playing" class="btn">See more</a>
-		`
-
-	popularHeader.innerHTML = `
-			<h1 class="block-title">Popular</h1>
-			<a href="list.html?id=popular" class="btn">See more</a>
-		`
-
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
   		.then((response) => response.json())
   		.then((data) => {
@@ -134,13 +121,7 @@
 
 					movie.genre_ids.forEach(id => {
 
-						let currentGenre = genres.find(genre => genre.id == id)
-
-						let genreItem = document.createElement("li")
-						
-						genreItem.innerText = currentGenre.name
-
-						genreList.append(genreItem)
+						genreList.append(genreSpan(id))
 
 					})
 
