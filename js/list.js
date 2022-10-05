@@ -7,12 +7,6 @@
     let params = new URLSearchParams(window.location.search) 
     let id = params.get("id")
 
-    let wrapperELm = document.querySelector(".wrapper")
-    
-    let headerElm = document.createElement("header")
-    headerElm.classList.add("header", "list-header")
-    wrapperELm.append(headerElm)
-
     let siteTitle = document.createElement("h1")
 	siteTitle.classList.add("site-title")
     siteTitle.innerText = `myLists`
@@ -24,9 +18,6 @@
         <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
         `
 	headerElm.append(headerNav)
-
-    let mainElm = makeElement("main", "main")
-    wrapperELm.append(mainElm)
 
     let sectionElm = makeElement("section", "content")
 	mainElm.append(sectionElm)

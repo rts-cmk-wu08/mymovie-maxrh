@@ -4,10 +4,23 @@ const baseURL = "https://api.themoviedb.org/3"
 const imgURL = "https://image.tmdb.org/t/p/w500"
 
 const bodyElm = document.querySelector("body")
+const wrapperELm = document.querySelector(".wrapper")
+
+const headerElm = document.createElement("header")
+headerElm.classList.add("header")
+wrapperELm.append(headerElm)
+
+const mainElm = document.createElement("main")
+mainElm.classList.add("main")
+wrapperELm.append(mainElm)
+
+const footerElm = document.createElement("footer")
+footerElm.classList.add("footer")
+wrapperELm.append(footerElm)
+
 
 function darkmodeToggle() {
-
-    let toggleIcon = document.getElementById("toggleIcon")
+    const toggleIcon = document.getElementById("toggleIcon")
 
     toggleIcon.classList.toggle("fa-toggle-off")
     toggleIcon.classList.toggle("fa-toggle-on")
@@ -31,8 +44,7 @@ function darkmodeToggle() {
 }
 
 function setDarkmode() {
-
-    let toggleIcon = document.getElementById("toggleIcon")
+    const toggleIcon = document.getElementById("toggleIcon")
 
     if ( localStorage.getItem("darkmode") !== null ) {
         if ( localStorage.getItem("darkmode") == "true" ) {

@@ -8,10 +8,9 @@ import timeConvert from "../modules/timeConvert.js"
 let params = new URLSearchParams(window.location.search) 
 let id = params.get("id")
 
-let wrapperELm = document.querySelector(".wrapper")
-
-let headerElm = makeElement("header", "header", "detail-header")
-wrapperELm.append(headerElm)
+headerElm.classList.add("detail-header")
+mainElm.classList.add("content", "detail-content")
+footerElm.classList.add("detail-footer")
 
 let headerNav = makeElement("div", "nav")
 headerNav.innerHTML = `
@@ -19,13 +18,6 @@ headerNav.innerHTML = `
     <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
     `
 headerElm.append(headerNav)
-
-let mainElm = makeElement("main", "content", "detail-content")
-wrapperELm.append(mainElm)
-
-let footerElm = makeElement("footer", "footer", "detail-footer")
-wrapperELm.append(footerElm)
-    
 
     fetch(`${baseURL}/movie/${id}?api_key=${apikey}&append_to_response=videos`)
         .then(response => response.json())

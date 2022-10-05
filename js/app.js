@@ -4,10 +4,9 @@
     import sectionHeader from "../modules/sectionHeader.js"
 	import timeConvert from "../modules/timeConvert.js"
 
-	let wrapperELm = document.querySelector(".wrapper")
-
-    let headerElm = makeElement("header", "header", "frontpage-header")
-	wrapperELm.append(headerElm)
+	headerElm.classList.add("frontpage-header")
+	mainElm.classList.add("frontpage-content")
+	footerElm.classList.add("frontpage-footer")
 
 	headerElm.innerHTML = `
 		<h1 class="site-title">myMovies</h1>
@@ -15,9 +14,6 @@
 			<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
 		</div>
 	`
-
-	let mainElm = makeElement("main", "content", "frontpage-content")
-    wrapperELm.append(mainElm)
 
 	let showingElm = makeElement("section", "showing")
 	mainElm.append(showingElm)
@@ -34,9 +30,6 @@
 
 	let popularList = makeElement("ul", "ml", "popular-list")
 	popularElm.append(popularList)
-
-	let footerElm = makeElement("footer", "footer", "frontpage-footer")
-    wrapperELm.append(footerElm)
 
 	
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
