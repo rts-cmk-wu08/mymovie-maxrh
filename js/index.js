@@ -5,17 +5,6 @@ const imgURL = "https://image.tmdb.org/t/p/w500"
 
 const bodyElm = document.querySelector("body")
 
-
-function timeConvert(n) {
-    let num = n
-    let hours = (num / 60)
-    let rhours = Math.floor(hours)
-    let minutes = (hours - rhours) * 60
-    let rminutes = Math.round(minutes)
-
-    return rhours + "h  " + rminutes + "min"
-}
-
 function darkmodeToggle() {
 
     let toggleIcon = document.getElementById("toggleIcon")

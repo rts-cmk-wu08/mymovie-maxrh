@@ -1,58 +1,51 @@
 
-    import { makeElement } from "../modules/makeElement.js"
+    import makeElement from "../modules/makeElement.js"
     import genreSpan from "../modules/genreSpan.js"
     import sectionHeader from "../modules/sectionHeader.js"
+	import timeConvert from "../modules/timeConvert.js"
 
 	let wrapperELm = document.querySelector(".wrapper")
 
-    let headerElm = document.createElement("header")
-    headerElm.classList.add("header", "frontpage-header")
-    wrapperELm.append(headerElm)
+    let headerElm = makeElement("header", "header", "frontpage-header")
+	wrapperELm.append(headerElm)
 
-    let mainElm = document.createElement("main")
-    mainElm.classList.add("content", "frontpage-content")
+	headerElm.innerHTML = `
+		<h1 class="site-title">myMovies</h1>
+		<div class="nav">
+			<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+		</div>
+	`
+
+	let mainElm = makeElement("main", "content", "frontpage-content")
     wrapperELm.append(mainElm)
 
-	let showingElm = document.createElement("section")
-	showingElm.classList.add("showing")
+	let showingElm = makeElement("section", "showing")
 	mainElm.append(showingElm)
 	
 	showingElm.append(sectionHeader("Now Showing", "See more", "list.html?id=now_playing"))
 
-	let showingList = document.createElement("ul")
-	showingList.classList.add("ml", "ml-horizontal", "showing-list")
+	let showingList = makeElement("ul", "ml", "ml-horizontal", "showing-list")
 	showingElm.append(showingList)
 
-	let popularElm = document.createElement("section")
-	popularElm.classList.add("popular")
+	let popularElm = makeElement("section", "popular")
 	mainElm.append(popularElm)
 
 	popularElm.append(sectionHeader("Popular", "See more", "list.html?id=popular"))
 
-	let popularList = document.createElement("ul")
-	popularList.classList.add("ml", "popular-list")
+	let popularList = makeElement("ul", "ml", "popular-list")
 	popularElm.append(popularList)
 
-	let footerElm = document.createElement("footer")
-    footerElm.classList.add("footer", "frontpage-footer")
+	let footerElm = makeElement("footer", "footer", "frontpage-footer")
     wrapperELm.append(footerElm)
 
-
-	headerElm.innerHTML = `
-			<h1 class="site-title">myMovies</h1>
-			<div class="nav">
-				<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-			</div>
-		`
 	
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
   		.then((response) => response.json())
   		.then((data) => {
 
 			data.results.forEach(movie => {
-				
-				let listItem = document.createElement("li")
-				listItem.classList.add("ml-item")
+
+				let listItem = makeElement("li", "ml-item")
 
 				let movieURL = `detail.html?id=${movie.id}`
 
@@ -90,8 +83,7 @@
 					.then(response => response.json())
 					.then(details => {
 
-					let listItem = document.createElement("li")
-					listItem.classList.add("ml-item")
+					let listItem = makeElement("li", "ml-item")
 
 					let movieURL = `detail.html?id=${movie.id}`
 
@@ -125,15 +117,10 @@
 
 					})
 
-
 				})
-
 
 			})
 
 		})
 
-
-
-
-		setDarkmode()
+	setDarkmode()

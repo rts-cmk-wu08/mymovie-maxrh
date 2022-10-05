@@ -1,45 +1,35 @@
 
-    import { languages } from "../data/languages.js"
-    import { makeElement } from "../modules/makeElement.js"
-    import genreSpan from "../modules/genreSpan.js"
+import { languages } from "../data/languages.js"
+import makeElement from "../modules/makeElement.js"
+import genreSpan from "../modules/genreSpan.js"
+import sectionHeader from "../modules/sectionHeader.js"
+import timeConvert from "../modules/timeConvert.js"
 
+let params = new URLSearchParams(window.location.search) 
+let id = params.get("id")
+
+let wrapperELm = document.querySelector(".wrapper")
+
+let headerElm = makeElement("header", "header", "detail-header")
+wrapperELm.append(headerElm)
+
+let headerNav = makeElement("div", "nav")
+headerNav.innerHTML = `
+    <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+    <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+    `
+headerElm.append(headerNav)
+
+let mainElm = makeElement("main", "content", "detail-content")
+wrapperELm.append(mainElm)
+
+let footerElm = makeElement("footer", "footer", "detail-footer")
+wrapperELm.append(footerElm)
     
-    let wrapperELm = document.querySelector(".wrapper")
 
-    let headerElm = document.createElement("header")
-    headerElm.classList.add("header", "detail-header")
-    wrapperELm.append(headerElm)
-
-    let headerNav = document.createElement("div")
-    headerNav.classList.add("nav")
-
-    headerNav.innerHTML = `
-
-        <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
-        <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-    
-        `
-
-    headerElm.append(headerNav)
-
-    console.log(history)
-
-
-    let mainElm = document.createElement("main")
-    mainElm.classList.add("content", "detail-content")
-    wrapperELm.append(mainElm)
-
-    let footerElm = document.createElement("footer")
-    footerElm.classList.add("footer", "detail-footer")
-    wrapperELm.append(footerElm)
-
-    let params = new URLSearchParams(window.location.search) 
-    let id = params.get("id")
-    
     fetch(`${baseURL}/movie/${id}?api_key=${apikey}&append_to_response=videos`)
         .then(response => response.json())
         .then(movie => {
-
             
         let movieRating = movie.vote_average.toFixed(1)
         let releaseDate = movie.release_date
@@ -52,10 +42,7 @@
 
         let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )
 
-
-        
-        let movieCover = document.createElement("div")
-        movieCover.classList.add("cover")
+        let movieCover = makeElement("div", "cover")
 
         if ( officialTrailer !== undefined ) {
             movieCover.innerHTML = `
@@ -86,24 +73,19 @@
                 <section class="movie-description">
                     <h2 class="block-title">Description</h2>
                     <p>${movie.overview}</p>
-
                 </section>
-                <section class="movie-cast">
-                    <header class="section-header">
-                        <h2 class="block-title">Cast</h2>
-                        <a href="#" class="btn">See more</a>
-                    </header>
-                    <ul class="ml ml-horizontal moviecast-list"></ul>
-                </section>
+                <section class="movie-cast"></section>
             `
-            
+
+            let castElm = document.querySelector(".movie-cast")
+            castElm.append(sectionHeader("Cast", "See more", "#"))
+            castElm.append(makeElement("div", "ml", "ml-horizontal", "moviecast-list"))
+
             let genreList = document.querySelector(".movie-genres")
 
             movie.genres.forEach(genre => {
                 genreList.append(genreSpan(genre))
             })
-
-
 
         fetch(`${baseURL}/movie/${movie.id}/credits?api_key=${apikey}`)
             .then(response => response.json())
@@ -113,10 +95,9 @@
                 let castList = document.querySelector(".moviecast-list")
                 
                 casts.forEach(cast => {
-            
-                    let listItem = document.createElement("li")
-                    listItem.classList.add("ml-item")
                     
+                    let listItem = makeElement("li", "ml-item")
+
                     if (cast.profile_path) {
                         listItem.innerHTML = `
                         <img src="https://placehold.jp/10/fff/aaa/72x72.png?text=Loading" alt="${cast.name}">
@@ -131,7 +112,6 @@
 
                     castList.append(listItem)
 
-
                     let imgElm = listItem.querySelector("img")
                     let castImg = new Image()
 
@@ -143,16 +123,10 @@
 
                 })
 
-
-                
-            
             })
 
-
             let videoModal = document.getElementById("videoModal")
-            let modalInner = document.createElement("div")
-            modalInner.classList.add("modal-inner")
-
+            let modalInner = makeElement("div", "modal-inner")
             let playBtn = document.getElementById("playBtn")
 
             if (playBtn) {
@@ -177,11 +151,9 @@
             window.onclick = function(event) {
                 if (event.target == videoModal) {
                     videoModal.style.display = "none"
-
                     modalInner.innerHTML = ``
                 }
             }
-
 
             let bmBtn = document.getElementById("bmBtn")
 
@@ -192,13 +164,11 @@
                 if ( bmIcon.classList.contains("fa-regular") ) {
                     bmIcon.classList.remove("fa-regular")
                     bmIcon.classList.add("fa-solid")
-
                     localStorage.setItem("bm-" + movie.id, "true")
 
                 } else {
                     bmIcon.classList.add("fa-regular")
                     bmIcon.classList.remove("fa-solid")
-
                     localStorage.setItem("bm-" + movie.id, "false")
                 }
                 
@@ -220,11 +190,7 @@
                 }                
             }
 
+        setBookmark()
+        setDarkmode() 
 
-            setBookmark()
-            setDarkmode() 
-        
     })
-
-
-

@@ -1,16 +1,13 @@
  
-    import { makeElement } from "../modules/makeElement.js"
-    import header from "../modules/header.js"
+    import makeElement from "../modules/makeElement.js"
     import sectionHeader from "../modules/sectionHeader.js"
     import genreSpan from "../modules/genreSpan.js"
+    import timeConvert from "../modules/timeConvert.js"
 
     let params = new URLSearchParams(window.location.search) 
     let id = params.get("id")
 
     let wrapperELm = document.querySelector(".wrapper")
-
-    // let testElm = makeElement("div", "test")
-    // wrapperELm.append(header())
     
     let headerElm = document.createElement("header")
     headerElm.classList.add("header", "list-header")
@@ -21,37 +18,28 @@
     siteTitle.innerText = `myLists`
 	headerElm.append(siteTitle)
 
-    let headerNav = document.createElement("div")
-	headerNav.classList.add("nav")
+    let headerNav = makeElement("div", "nav")
     headerNav.innerHTML = `
         <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
         <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
         `
 	headerElm.append(headerNav)
 
-    let mainElm = document.createElement("main")
-    mainElm.classList.add("main")
+    let mainElm = makeElement("main", "main")
     wrapperELm.append(mainElm)
 
-    let sectionElm = document.createElement("section")
-	sectionElm.classList.add("content")
+    let sectionElm = makeElement("section", "content")
 	mainElm.append(sectionElm)
-
 
     if (id == "popular") {
         sectionElm.append(sectionHeader("Popular", "", ""))
-
     } else if (id == "now_playing") {
         sectionElm.append(sectionHeader("Now Showing", "", ""))
-
     }
 
-
-    let movieList = document.createElement("ul")
+    let movieList = makeElement("ul", "ml")
     movieList.setAttribute('id', 'card-container') 
-    movieList.classList.add("ml")
     sectionElm.append(movieList)
-
 
     let popularPage = 1
 
