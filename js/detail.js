@@ -1,5 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
 
+	import { genres } from "../data/genres.js"
+    import { languages } from "../data/languages.js"
+    import { makeElement } from "../modules/makeElement.js"
+    
+    
     let wrapperELm = document.querySelector(".wrapper")
 
     let headerElm = document.createElement("header")
@@ -224,5 +228,4 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 
-})
 

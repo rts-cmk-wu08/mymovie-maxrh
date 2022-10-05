@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+	import { genres } from "../data/genres.js"
+    import { makeElement } from "../modules/makeElement.js"
 
 	let wrapperELm = document.querySelector(".wrapper")
 
@@ -154,5 +156,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 		setDarkmode()
-
-})

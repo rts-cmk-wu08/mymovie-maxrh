@@ -1,6 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => { 
  
+    import { genres } from "../data/genres.js"
+    import { makeElement } from "../modules/makeElement.js"
+
+    import header from "../modules/header.js"
+    import sectionHeader from "../modules/sectionHeader.js"
+
+    
     let wrapperELm = document.querySelector(".wrapper")
+
+    // let testElm = makeElement("div", "test")
+    wrapperELm.append(header())
+    wrapperELm.append(sectionHeader("My headline"))
+
 
     let headerElm = document.createElement("header")
     headerElm.classList.add("header", "list-header")
@@ -132,5 +143,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchPopular(popularPage)
     setDarkmode() 
-
-})
