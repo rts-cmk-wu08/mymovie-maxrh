@@ -1,19 +1,17 @@
  
     import { makeElement } from "../modules/makeElement.js"
-
     import header from "../modules/header.js"
     import sectionHeader from "../modules/sectionHeader.js"
-
     import genreSpan from "../modules/genreSpan.js"
+
+    let params = new URLSearchParams(window.location.search) 
+    let id = params.get("id")
 
     let wrapperELm = document.querySelector(".wrapper")
 
     // let testElm = makeElement("div", "test")
     // wrapperELm.append(header())
     
-    let params = new URLSearchParams(window.location.search) 
-    let id = params.get("id")
-
     let headerElm = document.createElement("header")
     headerElm.classList.add("header", "list-header")
     wrapperELm.append(headerElm)
@@ -93,13 +91,6 @@
                     let genreList = listItem.querySelector(".movie-genres")
 
 					movie.genre_ids.forEach(id => {
-
-						//let currentGenre = genres.find(genre => genre.id == id)
-
-						//let genreItem = document.createElement("li")
-						
-						//genreItem.innerText = currentGenre.name
-                        console.log(id)
                         
 						genreList.append(genreSpan(id))
 
