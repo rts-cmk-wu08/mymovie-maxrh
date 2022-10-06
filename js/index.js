@@ -18,11 +18,6 @@ const footerElm = document.createElement("footer")
 footerElm.classList.add("footer")
 wrapperELm.append(footerElm)
 
-
-
-
-
-
 function darkmodeToggle() {
     const element = document.getElementById("toggleIcon")
 

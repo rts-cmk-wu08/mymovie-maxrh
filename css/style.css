@@ -254,7 +254,7 @@ section.showing {
 
 /* detail-page */
 
-.detail-header {
+.detail-page .header {
 	position: relative;
 	margin-bottom: -20px;
 }
@@ -554,8 +554,8 @@ section.showing {
  	animation-duration: 1s;
 }
 
-.detail-header .nav .toggle,
-.detail-header .nav .back {
+.detail-page .nav .toggle,
+.detail-page .nav .back {
 	color: #fff !important;
 }
 

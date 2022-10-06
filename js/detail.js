@@ -26,6 +26,9 @@ headerElm.append(headerNav)
         let movieLanguage = languages.find(language => language.code == movie.original_language)        
         let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )
         
+        let bmKey = "bm-" + movie.id
+        let isBookmarked = localStorage.getItem(bmKey)
+
         let movieCover = makeElement("div", "cover")
 
         if ( officialTrailer !== undefined ) {
@@ -39,11 +42,13 @@ headerElm.append(headerNav)
         
         headerElm.append(movieCover)
 
+        console.log(isBookmarked)
+
         mainElm.innerHTML = `
                 <section class="movie-details">
                     <header class="movie-details__header">
                         <h1 class="movie-title">${movie.title}</h1>
-                        <button id="bmBtn" class="bookmark" onclick="darkmodeToggle()"><i id="bmIcon" class="fa-regular fa-bookmark"></i></button>
+                        <button id="bmBtn" class="bookmark"><i id="bmIcon" class="${isBookmarked === "true" ? "fa-solid" : "fa-regular"} fa-bookmark"></i></button>
                     </header>
                     
                     <span class="movie-rating"><i class="fa-solid fa-star"></i> ${movieRating}/10 IMDb</span>
@@ -142,39 +147,17 @@ headerElm.append(headerNav)
             let bmBtn = document.getElementById("bmBtn")
 
             bmBtn.onclick = function() {
-
-                let bmIcon = document.getElementById("bmIcon")
-
-                if ( bmIcon.classList.contains("fa-regular") ) {
+                if ( localStorage.getItem(bmKey) !== "true" ) {
+                    localStorage.setItem("bm-" + movie.id, "true")
                     bmIcon.classList.remove("fa-regular")
                     bmIcon.classList.add("fa-solid")
-                    localStorage.setItem("bm-" + movie.id, "true")
-
-                } else {
+                } else  {
+                    localStorage.setItem("bm-" + movie.id, "false")
                     bmIcon.classList.add("fa-regular")
                     bmIcon.classList.remove("fa-solid")
-                    localStorage.setItem("bm-" + movie.id, "false")
                 }
-                
             }
 
-            function setBookmark() {
-
-                let bmKey = "bm-" + movie.id
-                let bmIcon = document.getElementById("bmIcon")
-
-                if ( localStorage.getItem(bmKey) !== null ) {
-                    if ( localStorage.getItem(bmKey) == "true" ) {
-                        bmIcon.classList.remove("fa-regular")
-                        bmIcon.classList.add("fa-solid")
-                    } else {
-                        bmIcon.classList.add("fa-regular")
-                        bmIcon.classList.remove("fa-solid")
-                    }
-                }                
-            }
-
-        setBookmark()
+   
         setDarkmode() 
-
     })
