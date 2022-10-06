@@ -36,8 +36,6 @@ pageTitle.classList.add("hidden")
         
         headerElm.append(movieCover)
 
-        console.log(isBookmarked)
-
         mainElm.innerHTML = `
                 <section class="movie-details">
                     <header class="movie-details__header">
@@ -63,7 +61,6 @@ pageTitle.classList.add("hidden")
             let castElm = document.querySelector(".movie-cast")
             castElm.append(sectionHeader("Cast", "See more", "#"))
             castElm.append(makeElement("div", "ml", "ml-horizontal", "moviecast-list"))
-
             let genreList = document.querySelector(".movie-genres")
 
             movie.genres.forEach(genre => {
