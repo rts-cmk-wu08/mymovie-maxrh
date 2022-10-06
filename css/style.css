@@ -107,11 +107,15 @@ header {
 }
 
 
-.frontpage-header .nav {
+.header .nav {
+	justify-content: space-between;
+}
+
+.frontpage .header .nav {
 	justify-content:flex-end;
 }
 
-.detail-header .nav {
+.detail-page .header .nav {
 	margin: 30px 30px 0;
 }
 
@@ -322,7 +326,7 @@ section.showing {
 	color: #fff;
 }
 
-.detail-page .content {
+.detail-page .main {
 	padding: 30px;
 	background: #fff;
 	position: relative;
@@ -343,7 +347,7 @@ section.showing {
 
 /* footer */
 
-.frontpage-footer {
+.frontpage .footer {
 	background: #fff;
 	height: 60px;
 	width: 100%;
@@ -484,22 +488,22 @@ section.showing {
  	animation-duration: 1s;
 }
 
-.darkmode-on .frontpage-footer,
-.detail-page.darkmode-on .content {
+.frontpage.darkmode-on .footer,
+.detail-page.darkmode-on .main {
 	background-color: #111;
 	color: #eee;
 	animation-name: darkmodeFadeIn;
  	animation-duration: 1s;
 }
 
-.darkmode .frontpage-footer,
-.detail-page.darkmode  .content {
+.frontpage.darkmode .footer,
+.detail-page.darkmode  .main {
 	background-color: #111;
 	color: #eee;
 }
 
-.darkmode-off .frontpage-footer,
-.detail-page.darkmode-off .content {
+.frontpage.darkmode-off .footer,
+.detail-page.darkmode-off .main {
 	background-color: #fff;
 	color: #888;
 	animation-name: darkmodeFadeOut;

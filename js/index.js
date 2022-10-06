@@ -19,11 +19,15 @@ footerElm.classList.add("footer")
 wrapperELm.append(footerElm)
 
 
-function darkmodeToggle() {
-    const toggleIcon = document.getElementById("toggleIcon")
 
-    toggleIcon.classList.toggle("fa-toggle-off")
-    toggleIcon.classList.toggle("fa-toggle-on")
+
+
+
+function darkmodeToggle() {
+    const element = document.getElementById("toggleIcon")
+
+    element.classList.toggle("fa-toggle-off")
+    element.classList.toggle("fa-toggle-on")
 
     if (localStorage.getItem("darkmode") !== null) {
         if (localStorage.getItem("darkmode") == "true") {

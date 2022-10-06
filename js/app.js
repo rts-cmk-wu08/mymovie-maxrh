@@ -1,12 +1,7 @@
-
-    import makeElement from "../modules/makeElement.js"
-    import genreSpan from "../modules/genreSpan.js"
-    import sectionHeader from "../modules/sectionHeader.js"
-	import timeConvert from "../modules/timeConvert.js"
-
-	headerElm.classList.add("frontpage-header")
-	mainElm.classList.add("frontpage-content")
-	footerElm.classList.add("frontpage-footer")
+import makeElement from "../modules/makeElement.js"
+import genreSpan from "../modules/genreSpan.js"
+import sectionHeader from "../modules/sectionHeader.js"
+import timeConvert from "../modules/timeConvert.js"
 
 	headerElm.innerHTML = `
 		<h1 class="site-title">myMovies</h1>

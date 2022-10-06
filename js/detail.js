@@ -8,10 +8,6 @@ import timeConvert from "../modules/timeConvert.js"
 let params = new URLSearchParams(window.location.search) 
 let id = params.get("id")
 
-headerElm.classList.add("detail-header")
-mainElm.classList.add("content", "detail-content")
-footerElm.classList.add("detail-footer")
-
 let headerNav = makeElement("div", "nav")
 headerNav.innerHTML = `
     <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
@@ -25,15 +21,11 @@ headerElm.append(headerNav)
             
         let movieRating = movie.vote_average.toFixed(1)
         let releaseDate = movie.release_date
-        
         let [year, month, day] = releaseDate.split('-')
-        
         let movieYear = [year][0]
-
         let movieLanguage = languages.find(language => language.code == movie.original_language)        
-
         let officialTrailer = movie.videos.results.find(video => video.type == "Trailer" )
-
+        
         let movieCover = makeElement("div", "cover")
 
         if ( officialTrailer !== undefined ) {
