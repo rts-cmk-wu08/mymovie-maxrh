@@ -3,28 +3,23 @@ import genreSpan from "../modules/genreSpan.js"
 import sectionHeader from "../modules/sectionHeader.js"
 import timeConvert from "../modules/timeConvert.js"
 
-	headerElm.innerHTML = `
-		<h1 class="site-title">myMovies</h1>
-		<div class="nav">
-			<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-		</div>
-	`
-
-	let showingElm = makeElement("section", "showing")
-	mainElm.append(showingElm)
+pageTitle.innerText = `myMovies`
+		
+let showingElm = makeElement("section", "showing")
+mainElm.append(showingElm)
 	
-	showingElm.append(sectionHeader("Now Showing", "See more", "list.html?id=now_playing"))
+showingElm.append(sectionHeader("Now Showing", "See more", "list.html?id=now_playing"))
 
-	let showingList = makeElement("ul", "ml", "ml-horizontal", "showing-list")
-	showingElm.append(showingList)
+let showingList = makeElement("ul", "ml", "ml-horizontal", "showing-list")
+showingElm.append(showingList)
 
-	let popularElm = makeElement("section", "popular")
-	mainElm.append(popularElm)
+let popularElm = makeElement("section", "popular")
+mainElm.append(popularElm)
 
-	popularElm.append(sectionHeader("Popular", "See more", "list.html?id=popular"))
+popularElm.append(sectionHeader("Popular", "See more", "list.html?id=popular"))
 
-	let popularList = makeElement("ul", "ml", "popular-list")
-	popularElm.append(popularList)
+let popularList = makeElement("ul", "ml", "popular-list")
+popularElm.append(popularList)
 
 	
 	fetch(`${baseURL}/movie/now_playing?api_key=${apikey}`)
@@ -34,7 +29,6 @@ import timeConvert from "../modules/timeConvert.js"
 			data.results.forEach(movie => {
 
 				let listItem = makeElement("li", "ml-item")
-
 				let movieURL = `detail.html?id=${movie.id}`
 
 				listItem.innerHTML = `
@@ -85,6 +79,8 @@ import timeConvert from "../modules/timeConvert.js"
 						</div>
 						`
 
+					popularList.append(listItem)
+
 					let imgElm = listItem.querySelector("img")
 					let posterImg = new Image()
 
@@ -93,9 +89,6 @@ import timeConvert from "../modules/timeConvert.js"
 					posterImg.onload = () => {
 						imgElm.src = posterImg.src
 					}
-
-
-					popularList.append(listItem)
 
 					let genreList = listItem.querySelector(".movie-genres")
 

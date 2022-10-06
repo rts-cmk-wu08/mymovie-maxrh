@@ -1,4 +1,3 @@
-
 import { languages } from "../data/languages.js"
 import makeElement from "../modules/makeElement.js"
 import genreSpan from "../modules/genreSpan.js"
@@ -8,12 +7,7 @@ import timeConvert from "../modules/timeConvert.js"
 let params = new URLSearchParams(window.location.search) 
 let id = params.get("id")
 
-let headerNav = makeElement("div", "nav")
-headerNav.innerHTML = `
-    <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
-    <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-    `
-headerElm.append(headerNav)
+pageTitle.classList.add("hidden")
 
     fetch(`${baseURL}/movie/${id}?api_key=${apikey}&append_to_response=videos`)
         .then(response => response.json())

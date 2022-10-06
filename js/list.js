@@ -1,23 +1,12 @@
- 
-    import makeElement from "../modules/makeElement.js"
-    import sectionHeader from "../modules/sectionHeader.js"
-    import genreSpan from "../modules/genreSpan.js"
-    import timeConvert from "../modules/timeConvert.js"
+import makeElement from "../modules/makeElement.js"
+import sectionHeader from "../modules/sectionHeader.js"
+import genreSpan from "../modules/genreSpan.js"
+import timeConvert from "../modules/timeConvert.js"
 
     let params = new URLSearchParams(window.location.search) 
     let id = params.get("id")
 
-    let siteTitle = document.createElement("h1")
-	siteTitle.classList.add("site-title")
-    siteTitle.innerText = `myLists`
-	headerElm.append(siteTitle)
-
-    let headerNav = makeElement("div", "nav")
-    headerNav.innerHTML = `
-        <a href="index.html" class="back" ><i class="fa-solid fa-arrow-left"></i></a>
-        <button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
-        `
-	headerElm.append(headerNav)
+    pageTitle.innerText = `myLists`
 
     let sectionElm = makeElement("section", "content")
 	mainElm.append(sectionElm)

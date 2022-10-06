@@ -1,4 +1,3 @@
-
 const apikey = "e566d191afaba5f363a396fd59c36a61"
 const baseURL = "https://api.themoviedb.org/3"
 const imgURL = "https://image.tmdb.org/t/p/w500"
@@ -10,6 +9,19 @@ const headerElm = document.createElement("header")
 headerElm.classList.add("header")
 wrapperELm.append(headerElm)
 
+const pageTitle = document.createElement("h1")
+pageTitle.classList.add("page-title")
+headerElm.append(pageTitle)
+
+const pageNav = document.createElement("div")
+pageNav.classList.add("nav")
+headerElm.append(pageNav)
+
+pageNav.innerHTML = `
+        <a class="back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+		<button class="toggle" onclick="darkmodeToggle()"><i id="toggleIcon" class="fa-solid fa-toggle-off"></i></button>
+	`
+
 const mainElm = document.createElement("main")
 mainElm.classList.add("main")
 wrapperELm.append(mainElm)
@@ -18,8 +30,11 @@ const footerElm = document.createElement("footer")
 footerElm.classList.add("footer")
 wrapperELm.append(footerElm)
 
+
+
+
 function darkmodeToggle() {
-    const element = document.getElementById("toggleIcon")
+    let element = document.getElementById("toggleIcon")
 
     element.classList.toggle("fa-toggle-off")
     element.classList.toggle("fa-toggle-on")

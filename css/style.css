@@ -88,7 +88,7 @@ header {
 	margin-bottom: 20px;
 }
 
-.site-title {
+.page-title {
 	font-size: 18px;
 	line-height: 32px;
 	text-align: center;
@@ -106,14 +106,18 @@ header {
 	z-index: 1;
 }
 
-
 .header .nav {
 	justify-content: space-between;
 }
 
-.frontpage .header .nav {
+.frontpage .nav {
 	justify-content:flex-end;
 }
+
+.frontpage .nav .back {
+	display: none;
+}
+
 
 .detail-page .header .nav {
 	margin: 30px 30px 0;
